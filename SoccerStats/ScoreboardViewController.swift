@@ -7,10 +7,6 @@
 
 import UIKit
 
-class AppData: Codable{
-    static var time = 90.0
-}
-
 class ScoreboardViewController: UIViewController {
 
     override func viewDidLoad() {

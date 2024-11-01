@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		803C7B862CD509300053242B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803C7B852CD509300053242B /* Player.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		8005C1CF2CCFC65B004ABDF1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		8005C1B52CCFC659004ABDF1 /* SoccerStats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoccerStats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8005C1CE2CCFC65B004ABDF1 /* SoccerStatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoccerStatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8005C1D82CCFC65B004ABDF1 /* SoccerStatsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoccerStatsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		803C7B852CD509300053242B /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -88,6 +93,7 @@
 		8005C1AC2CCFC659004ABDF1 = {
 			isa = PBXGroup;
 			children = (
+				803C7B852CD509300053242B /* Player.swift */,
 				8005C1B72CCFC659004ABDF1 /* SoccerStats */,
 				8005C1D12CCFC65B004ABDF1 /* SoccerStatsTests */,
 				8005C1DB2CCFC65B004ABDF1 /* SoccerStatsUITests */,
@@ -249,6 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				803C7B862CD509300053242B /* Player.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
