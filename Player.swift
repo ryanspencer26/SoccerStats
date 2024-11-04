@@ -29,15 +29,4 @@ class Player: Codable{
         saves = 0
     }
     
-    init(name: String, number: Int, year: Int, goals: Int, assists: Int, shots: Int, shotsOnGoal: Int, saves: Int) {
-        self.name = name
-        self.number = number
-        self.year = year
-        self.goals = goals
-        self.assists = assists
-        self.shots = shots
-        self.shotsOnGoal = shotsOnGoal
-        self.saves = saves
-    }
-    
 }
