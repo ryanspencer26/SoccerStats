@@ -7,11 +7,17 @@
 
 import UIKit
 
+class AppData{
+    
+    static var totalTime = 5400
+    static var players: [Player] = [Player]()
+    
+}
+
 class ScoreboardViewController: UIViewController {
     
     @IBOutlet weak var timerLabel: UILabel!
     var timer: Timer!
-    var totalTime = 5400
     var live: Bool = false
     var timerStarted: Bool = false
 
@@ -23,10 +29,10 @@ class ScoreboardViewController: UIViewController {
     }
     
     @objc func updateTime() {
-        timerLabel.text = "\(timeFormatted(totalTime))"
+        timerLabel.text = "\(timeFormatted(AppData.totalTime))"
         if live == true{
-            if totalTime != 0 {
-                totalTime -= 1
+            if AppData.totalTime != 0 {
+                AppData.totalTime -= 1
             } else {
                 timer.invalidate()
             }

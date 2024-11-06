@@ -7,12 +7,6 @@
 
 import UIKit
 
-class AppData: Codable{
-    
-    static var players: [Player] = [Player]()
-    
-}
-
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
