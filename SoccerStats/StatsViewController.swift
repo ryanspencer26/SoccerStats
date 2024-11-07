@@ -7,14 +7,20 @@
 
 import UIKit
 
-class StatsViewController: UIViewController {
-
-    @IBOutlet weak var statPicker: UIPickerView!
+class StatsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    @IBOutlet weak var playerPicker: UIPickerView!
     
     var pickerData: [String] = [String]()
     
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        playerPicker.delegate = self
+        playerPicker.dataSource = self
 
         // Do any additional setup after loading the view.
         for player in AppData.players{
@@ -22,5 +28,21 @@ class StatsViewController: UIViewController {
         }
         
     }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
 
+    @IBAction func submit(_ sender: Any) {
+        
+    }
+    
 }

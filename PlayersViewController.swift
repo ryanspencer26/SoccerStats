@@ -19,6 +19,7 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("view will appear")
         tableView.reloadData()
     }
     
@@ -39,5 +40,9 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
             tableView.reloadData()
         }
     }
-
+    
+    @IBAction func refresh(_ sender: Any) {
+        tableView.reloadData()
+    }
+    
 }

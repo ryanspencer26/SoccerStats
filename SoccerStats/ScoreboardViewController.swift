@@ -11,6 +11,8 @@ class AppData{
     
     static var totalTime = 5400
     static var players: [Player] = [Player]()
+    static var homeScore = 0
+    static var awayScore = 0
     
 }
 
@@ -25,6 +27,9 @@ class ScoreboardViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        AppData.players.append(Player(name: "Spence", number: 8, year: 11))
+        AppData.players.append(Player(name: "Ryan", number: 17, year: 12))
+        AppData.players.append(Player(name: "Sean", number: 7, year: 11))
         
     }
     
