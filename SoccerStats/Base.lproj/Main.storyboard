@@ -277,7 +277,7 @@
                                             <color key="baseBackgroundColor" name="AccentColor"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="xfg-li-5pD" kind="show" id="jnt-Lg-rEE"/>
+                                            <segue destination="xfg-li-5pD" kind="show" identifier="" id="jnt-Lg-rEE"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnN-Lh-ldt">
@@ -437,7 +437,10 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Scoreboard" image="numbers.rectangle.fill" catalog="system" id="r1K-d8-TMj"/>
+                    <navigationItem key="navigationItem" id="fod-cg-ycm"/>
                     <connections>
+                        <outlet property="awayScoreLabel" destination="nyg-DP-2DR" id="QoR-7P-9Z4"/>
+                        <outlet property="homeScoreLabel" destination="uXx-t8-O43" id="0EX-Kx-ARx"/>
                         <outlet property="timerLabel" destination="3Lo-uU-BlW" id="rhb-HJ-qDG"/>
                     </connections>
                 </viewController>
@@ -537,28 +540,16 @@
                                     <segue destination="4C2-pw-vSz" kind="show" id="gUk-GT-TdA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Zj-UK-D0b">
-                                <rect key="frame" x="260" y="66" width="50" height="36"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="arrow.clockwise.circle.fill" catalog="system"/>
-                                <connections>
-                                    <action selector="refresh:" destination="mUh-Px-zyI" eventType="touchUpInside" id="Zcg-VD-WRt"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xN3-cM-H8z"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="P7o-Q4-cEc" firstAttribute="top" secondItem="9Zj-UK-D0b" secondAttribute="bottom" constant="7" id="9e6-8m-BNc"/>
                             <constraint firstItem="dzz-ub-xdt" firstAttribute="trailing" secondItem="1oH-lj-0Sz" secondAttribute="trailingMargin" id="BzK-es-AQ2"/>
                             <constraint firstItem="xN3-cM-H8z" firstAttribute="bottom" secondItem="P7o-Q4-cEc" secondAttribute="bottom" id="KMa-oH-5bS"/>
                             <constraint firstItem="xN3-cM-H8z" firstAttribute="trailing" secondItem="P7o-Q4-cEc" secondAttribute="trailing" id="Mg8-0g-bb0"/>
-                            <constraint firstItem="dzz-ub-xdt" firstAttribute="leading" secondItem="9Zj-UK-D0b" secondAttribute="trailing" constant="20" id="PCx-bq-hWO"/>
                             <constraint firstItem="dzz-ub-xdt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xN3-cM-H8z" secondAttribute="leading" symbolic="YES" id="Xfr-VC-1B7"/>
                             <constraint firstItem="dzz-ub-xdt" firstAttribute="top" secondItem="xN3-cM-H8z" secondAttribute="top" constant="7" id="jOT-bI-LU6"/>
-                            <constraint firstItem="9Zj-UK-D0b" firstAttribute="leading" secondItem="xN3-cM-H8z" secondAttribute="leading" constant="260" id="m2U-pw-aof"/>
                             <constraint firstItem="P7o-Q4-cEc" firstAttribute="top" secondItem="dzz-ub-xdt" secondAttribute="bottom" constant="8" id="qu8-wD-IU7"/>
-                            <constraint firstItem="9Zj-UK-D0b" firstAttribute="top" secondItem="xN3-cM-H8z" secondAttribute="top" constant="7" id="t8a-fq-rYC"/>
                             <constraint firstItem="P7o-Q4-cEc" firstAttribute="leading" secondItem="xN3-cM-H8z" secondAttribute="leading" id="xav-Sh-ZYJ"/>
                         </constraints>
                     </view>
@@ -613,6 +604,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wjx-sb-Ut5">
+                                <rect key="frame" x="141" y="232" width="111" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Home"/>
+                                    <segment title="Away"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="L0l-Ne-U7L"/>
                         <color key="backgroundColor" systemColor="systemGray3Color"/>
@@ -622,6 +621,7 @@
                         <outlet property="inputLabel" destination="MEK-aV-nOo" id="bVT-g2-5en"/>
                         <outlet property="nameField" destination="ouO-mG-299" id="wDf-3f-8n8"/>
                         <outlet property="numberField" destination="MNV-7R-qN7" id="2oN-Hl-qTW"/>
+                        <outlet property="segmentControl" destination="wjx-sb-Ut5" id="9mO-pQ-WP1"/>
                         <outlet property="yearField" destination="RtI-Cl-JEh" id="sTa-ft-KM2"/>
                     </connections>
                 </viewController>
@@ -631,7 +631,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.clockwise.circle.fill" catalog="system" width="128" height="123"/>
         <image name="chart.line.text.clipboard.fill" catalog="system" width="103" height="128"/>
         <image name="figure.indoor.soccer" catalog="system" width="126" height="128"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>

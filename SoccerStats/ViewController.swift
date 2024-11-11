@@ -7,6 +7,15 @@
 
 import UIKit
 
+class AppData{
+    
+    static var totalTime = 5400
+    static var players: [Player] = [Player]()
+    static var homeScore = 0
+    static var awayScore = 0
+    
+}
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {

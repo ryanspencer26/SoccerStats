@@ -19,7 +19,7 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("view will appear")
+        super.viewWillAppear(animated)
         tableView.reloadData()
     }
     
@@ -39,10 +39,6 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
             AppData.players.remove(at: indexPath.row)
             tableView.reloadData()
         }
-    }
-    
-    @IBAction func refresh(_ sender: Any) {
-        tableView.reloadData()
     }
     
 }

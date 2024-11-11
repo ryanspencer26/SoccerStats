@@ -7,29 +7,22 @@
 
 import UIKit
 
-class AppData{
-    
-    static var totalTime = 5400
-    static var players: [Player] = [Player]()
-    static var homeScore = 0
-    static var awayScore = 0
-    
-}
-
 class ScoreboardViewController: UIViewController {
     
     @IBOutlet weak var timerLabel: UILabel!
     var timer: Timer!
     var live: Bool = false
     var timerStarted: Bool = false
-
+    @IBOutlet weak var awayScoreLabel: UILabel!
+    @IBOutlet weak var homeScoreLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        AppData.players.append(Player(name: "Spence", number: 8, year: 11))
-        AppData.players.append(Player(name: "Ryan", number: 17, year: 12))
-        AppData.players.append(Player(name: "Sean", number: 7, year: 11))
+        AppData.players.append(Player(name: "Spence", number: 8, year: 11, team: "Home"))
+        AppData.players.append(Player(name: "Ryan", number: 17, year: 12, team: "Home"))
+        AppData.players.append(Player(name: "Sean", number: 7, year: 11, team: "Home"))
         
     }
     
@@ -47,7 +40,6 @@ class ScoreboardViewController: UIViewController {
     func timeFormatted(_ totalSeconds: Int) -> String {
         let seconds: Int = totalSeconds % 60
         let minutes: Int = totalSeconds / 60
-            //     let hours: Int = totalSeconds / 3600
         return String(format: "%02d:%02d", minutes, seconds)
     }
     
@@ -61,6 +53,12 @@ class ScoreboardViewController: UIViewController {
     
     @IBAction func pauseTimer(_ sender: Any) {
         live = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        awayScoreLabel.text = "\(AppData.awayScore)"
+        homeScoreLabel.text = "\(AppData.homeScore)"
     }
     
 }

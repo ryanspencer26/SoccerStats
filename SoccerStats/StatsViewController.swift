@@ -40,9 +40,20 @@ class StatsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presentingViewController?.viewWillAppear(true)
+    }
 
     @IBAction func submit(_ sender: Any) {
-        
+        AppData.players[playerPicker.selectedRow(inComponent: 0)].goals += 1
+        if segmentControl.selectedSegmentIndex == 0{
+            AppData.homeScore += 1
+        } else {
+            AppData.awayScore += 1
+        }
+        self.dismiss(animated: true)
     }
     
 }
