@@ -23,8 +23,18 @@ class StatsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         playerPicker.dataSource = self
 
         // Do any additional setup after loading the view.
-        for player in AppData.players{
-            pickerData.append(player.name)
+        if segmentControl.selectedSegmentIndex == 0 {
+            for player in AppData.players{
+                if player.team == "Home"{
+                    pickerData.append(player.name)
+                }
+            }
+        } else {
+            for player in AppData.players{
+                if player.team == "Away"{
+                    pickerData.append(player.name)
+                }
+            }
         }
         
     }
@@ -54,6 +64,31 @@ class StatsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             AppData.awayScore += 1
         }
         self.dismiss(animated: true)
+    }
+    
+    
+    @IBAction func indexSwitched(_ sender: UISegmentedControl) {
+        switch segmentControl.selectedSegmentIndex
+        {
+        case 0:
+            pickerData = [String]()
+            for player in AppData.players{
+                if player.team == "Home"{
+                    pickerData.append(player.name)
+                }
+            }
+            playerPicker.reloadAllComponents()
+        case 1:
+            pickerData = [String]()
+            for player in AppData.players{
+                if player.team == "Away"{
+                    pickerData.append(player.name)
+                }
+            }
+            playerPicker.reloadAllComponents()
+        default:
+            break;
+        }
     }
     
 }

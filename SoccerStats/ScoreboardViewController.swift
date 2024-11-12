@@ -15,26 +15,27 @@ class ScoreboardViewController: UIViewController {
     var timerStarted: Bool = false
     @IBOutlet weak var awayScoreLabel: UILabel!
     @IBOutlet weak var homeScoreLabel: UILabel!
+    var gameOver: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        AppData.players.append(Player(name: "Spence", number: 8, year: 11, team: "Home"))
-        AppData.players.append(Player(name: "Ryan", number: 17, year: 12, team: "Home"))
-        AppData.players.append(Player(name: "Sean", number: 7, year: 11, team: "Home"))
         
     }
     
     @objc func updateTime() {
-        timerLabel.text = "\(timeFormatted(AppData.totalTime))"
+        homeScoreLabel.text = "\(AppData.homeScore)"
+        awayScoreLabel.text = "\(AppData.awayScore)"
         if live == true{
             if AppData.totalTime != 0 {
                 AppData.totalTime -= 1
             } else {
                 timer.invalidate()
+                gameOver = true
             }
         }
+        timerLabel.text = "\(timeFormatted(AppData.totalTime))"
     }
     
     func timeFormatted(_ totalSeconds: Int) -> String {
@@ -59,6 +60,40 @@ class ScoreboardViewController: UIViewController {
         super.viewWillAppear(animated)
         awayScoreLabel.text = "\(AppData.awayScore)"
         homeScoreLabel.text = "\(AppData.homeScore)"
+    }
+    
+    
+    @IBAction func saveAction(_ sender: Any) {
+        if gameOver{
+            saveGame()
+        } else {
+            let alert = UIAlertController(title: "Warning", message: "The game is not finished. Are you sure you want to save the current game?", preferredStyle: .alert)
+            let yesAction = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+                self.saveGame()
+                self.live = false
+                AppData.totalTime = 5400
+            }
+            let noAction = UIAlertAction(title: "No", style: .default, handler: nil)
+            alert.addAction(yesAction)
+            alert.addAction(noAction)
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func saveGame(){
+        AppData.games.append(Game(homeScore: AppData.homeScore, awayScore: AppData.awayScore, homeShots: AppData.homeSaves, awayShots: AppData.awayShots, homeSOG: AppData.homeSOG, awaySOG: AppData.awaySOG, homeSaves: AppData.homeSaves, awaySaves: AppData.awaySaves, homeCorners: AppData.homeCorners, awayCorners: AppData.awayCorners))
+        // save to userDefaults
+        print("game saved")
+        AppData.homeScore = 0
+        AppData.awayScore = 0
+        AppData.homeShots = 0
+        AppData.awayShots = 0
+        AppData.homeSOG = 0
+        AppData.awaySOG = 0
+        AppData.homeSaves = 0
+        AppData.awaySaves = 0
+        AppData.homeCorners = 0
+        AppData.awayCorners = 0
     }
     
 }

@@ -13,6 +13,15 @@ class AppData{
     static var players: [Player] = [Player]()
     static var homeScore = 0
     static var awayScore = 0
+    static var homeShots = 0
+    static var awayShots = 0
+    static var homeSOG = 0
+    static var awaySOG = 0
+    static var homeSaves = 0
+    static var awaySaves = 0
+    static var homeCorners = 0
+    static var awayCorners = 0
+    static var games: [Game] = [Game]()
     
 }
 

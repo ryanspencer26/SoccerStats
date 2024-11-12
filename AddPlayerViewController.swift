@@ -37,10 +37,8 @@ class AddPlayerViewController: UIViewController {
                 if nameField.text! != ""{
                     if segmentControl.selectedSegmentIndex == 0{
                         AppData.players.append(Player(name: nameField.text!, number: num, year: yr, team: "Home"))
-                        self.dismiss(animated: true)
                     } else {
                         AppData.players.append(Player(name: nameField.text!, number: num, year: yr, team: "Away"))
-                        self.dismiss(animated: true)
                     }
                 }
             }
@@ -48,6 +46,12 @@ class AddPlayerViewController: UIViewController {
             inputLabel.text = "Invalid input"
             inputLabel.isHidden = false
         }
+        // save to userDefaults
+        self.dismiss(animated: true)
+    }
+    
+    @IBAction func tapRecognized(_ sender: Any) {
+        view.endEditing(true)
     }
     
 }
