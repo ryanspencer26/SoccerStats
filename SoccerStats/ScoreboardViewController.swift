@@ -14,7 +14,16 @@ class ScoreboardViewController: UIViewController {
     var live: Bool = false
     var timerStarted: Bool = false
     @IBOutlet weak var awayScoreLabel: UILabel!
+    @IBOutlet weak var awayShotLabel: UILabel!
+    @IBOutlet weak var awaySOGLabel: UILabel!
+    @IBOutlet weak var awaySaveLabel: UILabel!
+    @IBOutlet weak var awayCornerLabel: UILabel!
     @IBOutlet weak var homeScoreLabel: UILabel!
+    @IBOutlet weak var homeShotLabel: UILabel!
+    @IBOutlet weak var homeSOGLabel: UILabel!
+    @IBOutlet weak var homeSaveLabel: UILabel!
+    @IBOutlet weak var homeCornerLabel: UILabel!
+    
     var gameOver: Bool = false
     
     override func viewDidLoad() {
@@ -25,8 +34,6 @@ class ScoreboardViewController: UIViewController {
     }
     
     @objc func updateTime() {
-        homeScoreLabel.text = "\(AppData.homeScore)"
-        awayScoreLabel.text = "\(AppData.awayScore)"
         if live == true{
             if AppData.totalTime != 0 {
                 AppData.totalTime -= 1
@@ -42,6 +49,64 @@ class ScoreboardViewController: UIViewController {
         let seconds: Int = totalSeconds % 60
         let minutes: Int = totalSeconds / 60
         return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    @IBAction func addGoalAction(_ sender: Any) {
+        if !timerStarted {
+            let alert = UIAlertController(title: "Error", message: "Game not started", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        if AppData.players.count >= 4{
+            var homePlayers = 0
+            var awayPlayers = 0
+            for player in AppData.players{
+                if player.team == "Home"{
+                    homePlayers += 1
+                } else {
+                    awayPlayers += 1
+                }
+            }
+            if homePlayers >= 2 && awayPlayers >= 2{
+                performSegue(withIdentifier: "addGoalSegue", sender: self)
+                return
+            }
+        }
+        let alert = UIAlertController(title: "Error", message: "You must have 2+ players registered for each team.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func editStatAction(_ sender: Any) {
+        if !timerStarted {
+            let alert = UIAlertController(title: "Error", message: "Game not started", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        if AppData.players.count >= 4{
+            var homePlayers = 0
+            var awayPlayers = 0
+            for player in AppData.players{
+                if player.team == "Home"{
+                    homePlayers += 1
+                } else {
+                    awayPlayers += 1
+                }
+            }
+            if homePlayers >= 2 && awayPlayers >= 2{
+                performSegue(withIdentifier: "editStatSegue", sender: self)
+                return
+            }
+        }
+        let alert = UIAlertController(title: "Error", message: "You must have 2+ players registered for each team.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func startTimer(_ sender: Any) {
@@ -60,6 +125,14 @@ class ScoreboardViewController: UIViewController {
         super.viewWillAppear(animated)
         awayScoreLabel.text = "\(AppData.awayScore)"
         homeScoreLabel.text = "\(AppData.homeScore)"
+        awayShotLabel.text = "\(AppData.awayShots)"
+        homeShotLabel.text = "\(AppData.homeShots)"
+        awaySOGLabel.text = "\(AppData.awaySOG)"
+        homeSOGLabel.text = "\(AppData.homeSOG)"
+        awaySaveLabel.text = "\(AppData.awaySaves)"
+        homeSaveLabel.text = "\(AppData.homeSaves)"
+        awayCornerLabel.text = "\(AppData.awayCorners)"
+        homeCornerLabel.text = "\(AppData.homeCorners)"
     }
     
     
@@ -83,6 +156,9 @@ class ScoreboardViewController: UIViewController {
     func saveGame(){
         AppData.games.append(Game(homeScore: AppData.homeScore, awayScore: AppData.awayScore, homeShots: AppData.homeSaves, awayShots: AppData.awayShots, homeSOG: AppData.homeSOG, awaySOG: AppData.awaySOG, homeSaves: AppData.homeSaves, awaySaves: AppData.awaySaves, homeCorners: AppData.homeCorners, awayCorners: AppData.awayCorners))
         // save to userDefaults
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(AppData.games) { UserDefaults.standard.set(encoded, forKey: "games")
+        }
         print("game saved")
         AppData.homeScore = 0
         AppData.awayScore = 0

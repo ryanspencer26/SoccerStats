@@ -39,6 +39,9 @@ class GamesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
         if editingStyle == .delete{
             AppData.games.remove(at: indexPath.row)
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(AppData.games) { UserDefaults.standard.set(encoded, forKey: "games")
+            }
             tableView.reloadData()
         }
     }

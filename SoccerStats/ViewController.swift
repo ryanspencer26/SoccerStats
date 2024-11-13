@@ -22,6 +22,7 @@ class AppData{
     static var homeCorners = 0
     static var awayCorners = 0
     static var games: [Game] = [Game]()
+    static var index: Int!
     
 }
 
@@ -30,6 +31,21 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        if let thePlayers = UserDefaults.standard.data(forKey: "players") {
+                        let decoder = JSONDecoder()
+            if let decoded = try? decoder.decode([Player].self, from: thePlayers) {
+                AppData.players = decoded
+                        }
+                }
+        
+        if let theGames = UserDefaults.standard.data(forKey: "games") {
+            let decoder = JSONDecoder()
+            if let decoded = try? decoder.decode([Game].self, from: theGames) {
+                AppData.games = decoded
+            }
+        }
+        
     }
 
 

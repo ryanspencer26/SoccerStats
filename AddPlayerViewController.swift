@@ -11,8 +11,6 @@ class AddPlayerViewController: UIViewController {
     
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
-    @IBOutlet weak var inputLabel: UILabel!
-    
     @IBOutlet weak var yearField: UITextField!
     
     @IBOutlet weak var nameField: UITextField!
@@ -22,7 +20,6 @@ class AddPlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        inputLabel.isHidden = true
         // Do any additional setup after loading the view.
     }
     
@@ -40,14 +37,18 @@ class AddPlayerViewController: UIViewController {
                     } else {
                         AppData.players.append(Player(name: nameField.text!, number: num, year: yr, team: "Away"))
                     }
+                    let encoder = JSONEncoder()
+                    if let encoded = try? encoder.encode(AppData.players) { UserDefaults.standard.set(encoded, forKey: "players")
+                    }
+                    self.dismiss(animated: true)
+                    return
                 }
             }
-        } else {
-            inputLabel.text = "Invalid input"
-            inputLabel.isHidden = false
         }
-        // save to userDefaults
-        self.dismiss(animated: true)
+        let alert = UIAlertController(title: "Error", message: "Invalid Input", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func tapRecognized(_ sender: Any) {

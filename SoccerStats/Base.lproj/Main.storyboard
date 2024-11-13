@@ -350,6 +350,77 @@
             </objects>
             <point key="canvasLocation" x="2562.5954198473282" y="-86.619718309859152"/>
         </scene>
+        <!--Player Info View Controller-->
+        <scene sceneID="ipW-kI-ULg">
+            <objects>
+                <viewController id="ac2-3r-0Ql" customClass="PlayerInfoViewController" customModule="SoccerStats" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HBP-3o-aES">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="z2E-xT-FGF">
+                                <rect key="frame" x="16" y="271" width="361" height="300"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name #00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzf-y8-62E">
+                                        <rect key="frame" x="68" y="0.0" width="225" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 goals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUI-cG-a5H">
+                                        <rect key="frame" x="152.66666666666666" y="78.333333333333314" width="55.666666666666657" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 shots" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dn0-Ef-kjb">
+                                        <rect key="frame" x="152.33333333333334" y="140.66666666666669" width="56.333333333333343" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 shots on goal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15h-bs-VZp">
+                                        <rect key="frame" x="122.33333333333334" y="203.33333333333331" width="116.66666666666666" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6l-f7-9Am">
+                                        <rect key="frame" x="149.66666666666666" y="265.66666666666663" width="61.666666666666657" height="34.333333333333314"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="Back"/>
+                                        <connections>
+                                            <action selector="backAction:" destination="ac2-3r-0Ql" eventType="touchUpInside" id="Bxf-qQ-O8I"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="HnZ-hc-663"/>
+                                    <constraint firstAttribute="width" constant="361" id="O2v-HS-yrg"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BSQ-wb-X0T"/>
+                        <color key="backgroundColor" systemColor="systemGray3Color"/>
+                        <constraints>
+                            <constraint firstItem="z2E-xT-FGF" firstAttribute="top" secondItem="BSQ-wb-X0T" secondAttribute="top" constant="271" id="FK7-mW-0YY"/>
+                            <constraint firstItem="BSQ-wb-X0T" firstAttribute="trailing" secondItem="z2E-xT-FGF" secondAttribute="trailing" constant="16" id="NcO-4W-D1G"/>
+                            <constraint firstItem="z2E-xT-FGF" firstAttribute="leading" secondItem="BSQ-wb-X0T" secondAttribute="leading" constant="16" id="PUC-yj-eRy"/>
+                            <constraint firstItem="BSQ-wb-X0T" firstAttribute="bottom" secondItem="z2E-xT-FGF" secondAttribute="bottom" constant="271" id="oCn-26-6PC"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="WJw-4K-TFL"/>
+                    <connections>
+                        <outlet property="goalsLabel" destination="gUI-cG-a5H" id="4vD-oF-UoT"/>
+                        <outlet property="playerLabel" destination="lzf-y8-62E" id="tDv-d1-P6k"/>
+                        <outlet property="shotsLabel" destination="dn0-Ef-kjb" id="gYL-lk-W2I"/>
+                        <outlet property="shotsOnGoalLabel" destination="15h-bs-VZp" id="MF7-5L-dtZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MSv-pc-gmQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2852.6717557251909" y="1227.4647887323945"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8Aq-mw-LEw">
             <objects>
@@ -611,9 +682,9 @@
                                 <rect key="frame" x="34" y="324" width="325" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7h0-xA-Q0e">
-                                        <rect key="frame" x="0.0" y="0.0" width="66.333333333333329" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="49" height="50"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Start">
+                                        <buttonConfiguration key="configuration" style="filled" image="play.fill" catalog="system">
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                         </buttonConfiguration>
@@ -622,18 +693,18 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDy-5S-RHG">
-                                        <rect key="frame" x="86.333333333333343" y="0.0" width="66.333333333333343" height="50"/>
+                                        <rect key="frame" x="69" y="0.0" width="49" height="50"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="gray" image="chart.line.text.clipboard.fill" catalog="system">
+                                        <buttonConfiguration key="configuration" style="gray" image="soccerball.inverse" catalog="system">
                                             <color key="baseForegroundColor" systemColor="systemGray3Color"/>
                                             <color key="baseBackgroundColor" name="AccentColor"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="xfg-li-5pD" kind="show" identifier="" id="jnt-Lg-rEE"/>
+                                            <action selector="addGoalAction:" destination="XPR-yu-Yls" eventType="touchUpInside" id="6pw-vA-s68"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="reG-7u-vvu">
-                                        <rect key="frame" x="172.66666666666666" y="0.0" width="66" height="50"/>
+                                        <rect key="frame" x="138" y="0.0" width="49" height="50"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" image="square.and.arrow.down.fill" catalog="system">
                                             <color key="baseForegroundColor" systemColor="systemGray3Color"/>
@@ -643,10 +714,21 @@
                                             <action selector="saveAction:" destination="XPR-yu-Yls" eventType="touchUpInside" id="oAB-yF-Ve2"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnN-Lh-ldt">
-                                        <rect key="frame" x="258.66666666666669" y="0.0" width="66.333333333333314" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wuu-XW-h6p">
+                                        <rect key="frame" x="207" y="0.0" width="49" height="50"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Stop">
+                                        <buttonConfiguration key="configuration" style="filled" image="chart.line.text.clipboard.fill" catalog="system">
+                                            <color key="baseForegroundColor" systemColor="systemGray3Color"/>
+                                            <color key="baseBackgroundColor" name="AccentColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="editStatAction:" destination="XPR-yu-Yls" eventType="touchUpInside" id="mW0-7Y-9Hb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnN-Lh-ldt">
+                                        <rect key="frame" x="276" y="0.0" width="49" height="50"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" image="stop.fill" catalog="system">
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="baseBackgroundColor" systemColor="systemRedColor"/>
                                         </buttonConfiguration>
@@ -691,9 +773,19 @@
                     <tabBarItem key="tabBarItem" title="Scoreboard" image="numbers.rectangle.fill" catalog="system" id="r1K-d8-TMj"/>
                     <navigationItem key="navigationItem" id="fod-cg-ycm"/>
                     <connections>
+                        <outlet property="awayCornerLabel" destination="utQ-et-9QH" id="g38-eC-QTk"/>
+                        <outlet property="awaySOGLabel" destination="QdA-Pq-VRs" id="EUt-TA-Ml3"/>
+                        <outlet property="awaySaveLabel" destination="3SV-sQ-B7V" id="aom-kY-ufi"/>
                         <outlet property="awayScoreLabel" destination="nyg-DP-2DR" id="QoR-7P-9Z4"/>
+                        <outlet property="awayShotLabel" destination="7wv-iz-cxF" id="9hy-ZA-P8D"/>
+                        <outlet property="homeCornerLabel" destination="LdH-Ce-UJo" id="2xQ-gt-5Jt"/>
+                        <outlet property="homeSOGLabel" destination="hvE-cp-zXw" id="9rm-MU-zjX"/>
+                        <outlet property="homeSaveLabel" destination="Mka-ZN-ddy" id="U4z-ht-yz1"/>
                         <outlet property="homeScoreLabel" destination="uXx-t8-O43" id="0EX-Kx-ARx"/>
+                        <outlet property="homeShotLabel" destination="lbR-P9-35H" id="1l4-5a-pKf"/>
                         <outlet property="timerLabel" destination="3Lo-uU-BlW" id="rhb-HJ-qDG"/>
+                        <segue destination="wir-Cd-Mrd" kind="show" identifier="editStatSegue" id="qGx-NA-sEk"/>
+                        <segue destination="xfg-li-5pD" kind="show" identifier="addGoalSegue" id="Mxh-BL-CNf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zim-NZ-ANn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -830,6 +922,7 @@
                     <tabBarItem key="tabBarItem" title="Players" image="figure.indoor.soccer" catalog="system" id="PSB-Ib-eHl"/>
                     <connections>
                         <outlet property="tableView" destination="P7o-Q4-cEc" id="cUT-4h-7HU"/>
+                        <segue destination="ac2-3r-0Ql" kind="show" identifier="playerInfoSegue" id="e3R-97-ilV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BxY-hJ-8d9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -858,7 +951,7 @@
                                         </segments>
                                     </segmentedControl>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ouO-mG-299">
-                                        <rect key="frame" x="25" y="58.666666666666686" width="150" height="35"/>
+                                        <rect key="frame" x="25" y="69.666666666666686" width="150" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="B1D-NR-K02"/>
                                             <constraint firstAttribute="height" constant="35" id="NTt-1o-0dK"/>
@@ -867,7 +960,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MNV-7R-qN7">
-                                        <rect key="frame" x="25" y="117.33333333333331" width="150" height="35"/>
+                                        <rect key="frame" x="25" y="139.66666666666669" width="150" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="JUq-2l-LGZ"/>
                                             <constraint firstAttribute="width" constant="150" id="sP5-Sc-NmR"/>
@@ -876,7 +969,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Year" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RtI-Cl-JEh">
-                                        <rect key="frame" x="25" y="176.33333333333331" width="150" height="35"/>
+                                        <rect key="frame" x="25" y="209.33333333333331" width="150" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="68f-Go-sDp"/>
                                             <constraint firstAttribute="width" constant="150" id="xJ0-eq-g6p"/>
@@ -885,7 +978,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6n3-pi-frx">
-                                        <rect key="frame" x="25" y="235" width="150" height="35"/>
+                                        <rect key="frame" x="25" y="279" width="150" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="0fN-2Y-iCL"/>
                                             <constraint firstAttribute="height" constant="35" id="tfx-qr-Yat"/>
@@ -896,15 +989,6 @@
                                             <action selector="addPlayer:" destination="4C2-pw-vSz" eventType="touchUpInside" id="MJB-ac-QOI"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="blah" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEK-aV-nOo">
-                                        <rect key="frame" x="83.666666666666657" y="293.66666666666663" width="32.666666666666657" height="20.333333333333314"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20.333333333333314" id="G54-US-wtH"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="314" id="UbE-Q3-HUv"/>
@@ -927,7 +1011,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="p2E-1z-Xfp"/>
                     <connections>
-                        <outlet property="inputLabel" destination="MEK-aV-nOo" id="bVT-g2-5en"/>
                         <outlet property="nameField" destination="ouO-mG-299" id="wDf-3f-8n8"/>
                         <outlet property="numberField" destination="MNV-7R-qN7" id="2oN-Hl-qTW"/>
                         <outlet property="segmentControl" destination="wjx-sb-Ut5" id="9mO-pQ-WP1"/>
@@ -943,16 +1026,78 @@
             </objects>
             <point key="canvasLocation" x="2854.1984732824426" y="559.85915492957747"/>
         </scene>
+        <!--Edit Stats View Controller-->
+        <scene sceneID="LBr-xC-tAN">
+            <objects>
+                <viewController id="wir-Cd-Mrd" customClass="EditStatsViewController" customModule="SoccerStats" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6gB-1C-wTR">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="HQr-IQ-azp">
+                                <rect key="frame" x="36" y="206.99999999999997" width="320" height="325.33333333333326"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M3B-sl-c7h">
+                                        <rect key="frame" x="36.666666666666686" y="0.0" width="247" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="dtd-xl-Llg"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Shot"/>
+                                            <segment title="SOG"/>
+                                            <segment title="Save"/>
+                                            <segment title="Corner"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VIF-g9-Nv1">
+                                        <rect key="frame" x="0.0" y="55" width="320" height="216"/>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I6n-Df-174">
+                                        <rect key="frame" x="121" y="291" width="78" height="34.333333333333314"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="Submit"/>
+                                        <connections>
+                                            <action selector="submitAction:" destination="wir-Cd-Mrd" eventType="touchUpInside" id="9Pn-7y-pHm"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="D45-Gd-3o7"/>
+                                    <constraint firstAttribute="height" constant="325.33333333333326" id="uho-w8-fjf"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="C9F-N8-utl"/>
+                        <color key="backgroundColor" systemColor="systemGray3Color"/>
+                        <constraints>
+                            <constraint firstItem="HQr-IQ-azp" firstAttribute="top" secondItem="C9F-N8-utl" secondAttribute="top" constant="207" id="1zT-4V-4ak"/>
+                            <constraint firstItem="C9F-N8-utl" firstAttribute="trailing" secondItem="HQr-IQ-azp" secondAttribute="trailing" constant="37" id="AzF-3A-4mb"/>
+                            <constraint firstItem="HQr-IQ-azp" firstAttribute="leading" secondItem="C9F-N8-utl" secondAttribute="leading" constant="36" id="jPf-FA-bac"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="lX0-Rq-ZS7"/>
+                    <connections>
+                        <outlet property="playerPicker" destination="VIF-g9-Nv1" id="8oE-2P-oSb"/>
+                        <outlet property="segmentControl" destination="M3B-sl-c7h" id="qv5-bz-B5a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iH2-Bj-gXO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-106.10687022900763" y="698.59154929577471"/>
+        </scene>
     </scenes>
     <resources>
         <image name="chart.line.text.clipboard.fill" catalog="system" width="103" height="128"/>
         <image name="figure.indoor.soccer" catalog="system" width="126" height="128"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="numbers.rectangle.fill" catalog="system" width="128" height="93"/>
+        <image name="play.fill" catalog="system" width="120" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="soccerball.inverse" catalog="system" width="128" height="123"/>
         <image name="soccerballtransparent" width="2787" height="2713"/>
         <image name="square.and.arrow.down.fill" catalog="system" width="121" height="128"/>
         <image name="square.and.arrow.down.on.square.fill" catalog="system" width="126" height="128"/>
+        <image name="stop.fill" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

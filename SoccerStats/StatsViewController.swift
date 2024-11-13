@@ -57,11 +57,25 @@ class StatsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
 
     @IBAction func submit(_ sender: Any) {
-        AppData.players[playerPicker.selectedRow(inComponent: 0)].goals += 1
+        for player in AppData.players {
+            if player.name == pickerData[playerPicker.selectedRow(inComponent: 0)]{
+                player.goals += 1
+                player.shots += 1
+                player.shotsOnGoal += 1
+                break
+            }
+        }
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(AppData.players) { UserDefaults.standard.set(encoded, forKey: "players")
+        }
         if segmentControl.selectedSegmentIndex == 0{
             AppData.homeScore += 1
+            AppData.homeShots += 1
+            AppData.homeSOG += 1
         } else {
             AppData.awayScore += 1
+            AppData.awayShots += 1
+            AppData.awaySOG += 1
         }
         self.dismiss(animated: true)
     }

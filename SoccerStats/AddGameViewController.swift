@@ -138,6 +138,9 @@ class AddGameViewController: UIViewController {
     @IBAction func saveGame(_ sender: Any) {
         AppData.games.append(Game(homeScore: Int(homeGoalStepper.value), awayScore: Int(awayGoalStepper.value), homeShots: Int(homeShotStepper.value), awayShots: Int(awayShotStepper.value), homeSOG: Int(homeSOGStepper.value), awaySOG: Int(awaySOGStepper.value), homeSaves: Int(homeSaveStepper.value), awaySaves: Int(awaySaveStepper.value), homeCorners: Int(homeCornerStepper.value), awayCorners: Int(awayCornerStepper.value)))
         // save to userDefaults
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(AppData.games) { UserDefaults.standard.set(encoded, forKey: "games")
+        }
         self.dismiss(animated: true)
     }
     
