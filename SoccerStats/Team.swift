@@ -15,12 +15,12 @@ class Team {
     var wlRatio: Double
     var players: [Player]
     
-    init(name: String, wins: Int, losses: Int, wlRatio: Double, players: [Player]) {
+    init(name: String) {
         self.name = name
-        self.wins = wins
-        self.losses = losses
-        self.wlRatio = wlRatio
-        self.players = players
+        wins = 0
+        losses = 0
+        wlRatio = 0
+        players = [Player]()
     }
     
 }

@@ -23,6 +23,8 @@ class ScoreboardViewController: UIViewController {
     @IBOutlet weak var homeSOGLabel: UILabel!
     @IBOutlet weak var homeSaveLabel: UILabel!
     @IBOutlet weak var homeCornerLabel: UILabel!
+    @IBOutlet weak var homePopUp: UIButton!
+    @IBOutlet weak var awayPopUp: UIButton!
     
     var gameOver: Bool = false
     
@@ -30,6 +32,39 @@ class ScoreboardViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        var availableTeams = AppData.teams
+        
+//        // create the closure
+//        let optionClosure = {(action: UIAction) in
+//                    print(action.title)
+//                }
+//        
+//        // create an array to store the actions
+//        var optionsArray = [UIAction]()
+//
+//        // loop and populate the actions array
+//        for team in availableTeams {
+//            // create each action and insert the right country as a title
+//            let action = UIAction(title: team.name, state: .off, handler: optionClosure)
+//                    
+//            // add newly created action to actions array
+//            optionsArray.append(action)
+//        }
+//                
+//                
+//        // set the state of first country in the array as ON
+//        optionsArray[0].state = .on
+//
+//        // create an options menu
+//        let optionsMenu = UIMenu(title: "", options: .displayInline, children: optionsArray)
+//                
+//        // add everything to your button
+//        homePopUp.menu = optionsMenu
+//        awayPopUp.menu = optionsMenu
+//
+//        // make sure the popup button shows the selected value
+//        homePopUp.changesSelectionAsPrimaryAction = true
+//        homePopUp.showsMenuAsPrimaryAction = true
         
     }
     
@@ -170,6 +205,18 @@ class ScoreboardViewController: UIViewController {
         AppData.awaySaves = 0
         AppData.homeCorners = 0
         AppData.awayCorners = 0
+    }
+    
+    @IBAction func homePopUpAction(_ sender: Any) {
+        
+        
+        
+    }
+    
+    @IBAction func awayPopUpAction(_ sender: Any) {
+        
+        
+        
     }
     
 }

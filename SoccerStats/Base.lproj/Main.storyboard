@@ -7,6 +7,7 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -134,6 +135,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="reG-Ui-z8X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1831" y="39"/>
+        </scene>
+        <!--Teams-->
+        <scene sceneID="RYq-iK-Mq2">
+            <objects>
+                <viewController id="PnK-LG-U7Y" customClass="TeamsViewController" customModule="SoccerStats" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0hk-3H-70i">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Fqg-7p-Hf5">
+                                <rect key="frame" x="0.0" y="109" width="393" height="660"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="660" id="4WO-Fz-j0d"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" textLabel="Z00-b8-xoT" detailTextLabel="E0V-fH-ZFL" style="IBUITableViewCellStyleValue1" id="Xhu-Z4-lAr">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xhu-Z4-lAr" id="Ni1-iT-pEP">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Z00-b8-xoT">
+                                                    <rect key="frame" x="20" y="15" width="25" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E0V-fH-ZFL">
+                                                    <rect key="frame" x="340.33333333333331" y="15" width="32.666666666666664" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LEr-Ok-Diw"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Fqg-7p-Hf5" firstAttribute="leading" secondItem="LEr-Ok-Diw" secondAttribute="leading" id="DDz-yE-ySI"/>
+                            <constraint firstItem="LEr-Ok-Diw" firstAttribute="trailing" secondItem="Fqg-7p-Hf5" secondAttribute="trailing" id="qrm-Xl-rgp"/>
+                            <constraint firstItem="LEr-Ok-Diw" firstAttribute="bottom" secondItem="Fqg-7p-Hf5" secondAttribute="bottom" id="ujY-pX-Zsw"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Teams" image="person.3.fill" catalog="system" id="ZnI-9Z-GAc"/>
+                    <connections>
+                        <outlet property="teamTable" destination="Fqg-7p-Hf5" id="Fyf-J5-Kpj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qqi-sM-KHi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1830" y="-635"/>
         </scene>
         <!--Add Game View Controller-->
         <scene sceneID="Ea4-Xi-SDG">
@@ -436,6 +496,7 @@
                         <segue destination="XPR-yu-Yls" kind="relationship" relationship="viewControllers" id="gO4-Nj-nbJ"/>
                         <segue destination="IDy-z9-uuW" kind="relationship" relationship="viewControllers" id="LHj-qD-aFv"/>
                         <segue destination="mUh-Px-zyI" kind="relationship" relationship="viewControllers" id="2mL-K1-diT"/>
+                        <segue destination="PnK-LG-U7Y" kind="relationship" relationship="viewControllers" id="iIy-fm-259"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPU-H1-6DD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -453,15 +514,20 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UdW-oT-YAT">
                                 <rect key="frame" x="0.0" y="66" width="196" height="250"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mP-Bx-Mow">
+                                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wGb-r1-Edi">
                                         <rect key="frame" x="0.0" y="0.0" width="196" height="75"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="1tA-N1-Ya5"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <menu key="menu" title="Home Team" id="G5c-4x-SmU">
+                                            <children>
+                                                <command title="Item 1" id="d4d-sh-1yx"/>
+                                                <command title="Item 2" id="0aF-N0-wuv"/>
+                                            </children>
+                                        </menu>
+                                        <state key="normal" title="Home"/>
+                                        <connections>
+                                            <action selector="homePopUpAction:" destination="XPR-yu-Yls" eventType="touchUpInside" id="FUQ-z0-yaT"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXx-t8-O43">
                                         <rect key="frame" x="0.0" y="75" width="196" height="175"/>
                                         <constraints>
@@ -571,15 +637,20 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="soM-9k-nNq">
                                 <rect key="frame" x="197" y="66" width="196" height="250"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Away" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WyW-6y-JVC">
+                                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lLQ-uk-oBu">
                                         <rect key="frame" x="0.0" y="0.0" width="196" height="75"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="CzI-Nj-kW9"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <menu key="menu" title="Away Team" id="Rbg-UX-9AQ">
+                                            <children>
+                                                <command title="Item 1" id="ptv-Vn-6Vb"/>
+                                                <command title="Item 2" id="fRC-l0-pQ9"/>
+                                            </children>
+                                        </menu>
+                                        <state key="normal" title="Away"/>
+                                        <connections>
+                                            <action selector="awayPopUpAction:" destination="XPR-yu-Yls" eventType="touchUpInside" id="VWC-Oy-B90"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyg-DP-2DR">
                                         <rect key="frame" x="0.0" y="75" width="196" height="175"/>
                                         <constraints>
@@ -774,11 +845,13 @@
                     <navigationItem key="navigationItem" id="fod-cg-ycm"/>
                     <connections>
                         <outlet property="awayCornerLabel" destination="utQ-et-9QH" id="g38-eC-QTk"/>
+                        <outlet property="awayPopUp" destination="lLQ-uk-oBu" id="Za3-4a-ZTs"/>
                         <outlet property="awaySOGLabel" destination="QdA-Pq-VRs" id="EUt-TA-Ml3"/>
                         <outlet property="awaySaveLabel" destination="3SV-sQ-B7V" id="aom-kY-ufi"/>
                         <outlet property="awayScoreLabel" destination="nyg-DP-2DR" id="QoR-7P-9Z4"/>
                         <outlet property="awayShotLabel" destination="7wv-iz-cxF" id="9hy-ZA-P8D"/>
                         <outlet property="homeCornerLabel" destination="LdH-Ce-UJo" id="2xQ-gt-5Jt"/>
+                        <outlet property="homePopUp" destination="wGb-r1-Edi" id="9DC-cs-uhy"/>
                         <outlet property="homeSOGLabel" destination="hvE-cp-zXw" id="9rm-MU-zjX"/>
                         <outlet property="homeSaveLabel" destination="Mka-ZN-ddy" id="U4z-ht-yz1"/>
                         <outlet property="homeScoreLabel" destination="uXx-t8-O43" id="0EX-Kx-ARx"/>
@@ -1091,6 +1164,7 @@
         <image name="figure.indoor.soccer" catalog="system" width="126" height="128"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="numbers.rectangle.fill" catalog="system" width="128" height="93"/>
+        <image name="person.3.fill" catalog="system" width="128" height="66"/>
         <image name="play.fill" catalog="system" width="120" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="soccerball.inverse" catalog="system" width="128" height="123"/>
@@ -1105,13 +1179,13 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

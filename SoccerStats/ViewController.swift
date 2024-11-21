@@ -22,6 +22,7 @@ class AppData{
     static var homeCorners = 0
     static var awayCorners = 0
     static var games: [Game] = [Game]()
+    static var teams: [Team] = [Team]()
     static var index: Int!
     
 }
