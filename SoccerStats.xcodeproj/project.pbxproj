@@ -11,6 +11,7 @@
 		80501B2E2CD90DE6008AEDEB /* PlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80501B2D2CD90DE6008AEDEB /* PlayersViewController.swift */; };
 		80CA2D572CDBA71100C5AD90 /* AddPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CA2D562CDBA71100C5AD90 /* AddPlayerViewController.swift */; };
 		B73609DE2CE312E60011871A /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73609DD2CE312E60011871A /* GamesViewController.swift */; };
+		BA1DB0B42CF606F2005D115C /* TeamAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1DB0B32CF606F2005D115C /* TeamAddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		80501B2D2CD90DE6008AEDEB /* PlayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersViewController.swift; sourceTree = "<group>"; };
 		80CA2D562CDBA71100C5AD90 /* AddPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerViewController.swift; sourceTree = "<group>"; };
 		B73609DD2CE312E60011871A /* GamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
+		BA1DB0B32CF606F2005D115C /* TeamAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamAddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -99,6 +101,7 @@
 		8005C1AC2CCFC659004ABDF1 = {
 			isa = PBXGroup;
 			children = (
+				BA1DB0B32CF606F2005D115C /* TeamAddViewController.swift */,
 				B73609DD2CE312E60011871A /* GamesViewController.swift */,
 				80CA2D562CDBA71100C5AD90 /* AddPlayerViewController.swift */,
 				80501B2D2CD90DE6008AEDEB /* PlayersViewController.swift */,
@@ -266,6 +269,7 @@
 			files = (
 				803C7B862CD509300053242B /* Player.swift in Sources */,
 				B73609DE2CE312E60011871A /* GamesViewController.swift in Sources */,
+				BA1DB0B42CF606F2005D115C /* TeamAddViewController.swift in Sources */,
 				80501B2E2CD90DE6008AEDEB /* PlayersViewController.swift in Sources */,
 				80CA2D572CDBA71100C5AD90 /* AddPlayerViewController.swift in Sources */,
 			);

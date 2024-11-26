@@ -18,8 +18,13 @@ class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         teamTable.dataSource = self
         teamTable.delegate = self
         
+        
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        teamTable.reloadData()
+        print(AppData.teams.count)
+    }
+  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         AppData.teams.count
     }
@@ -30,5 +35,6 @@ class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.detailTextLabel?.text = "\(AppData.teams[indexPath.row].wins)-\(AppData.teams[indexPath.row].losses)"
         return cell
     }
+    
 
 }
