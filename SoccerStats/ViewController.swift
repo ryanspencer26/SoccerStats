@@ -24,6 +24,8 @@ class AppData{
     static var games: [Game] = [Game]()
     static var teams: [Team] = [Team]()
     static var index: Int!
+    static var currentHome: String!
+    static var currentAway: String!
     
 }
 
@@ -44,6 +46,13 @@ class ViewController: UIViewController {
             let decoder = JSONDecoder()
             if let decoded = try? decoder.decode([Game].self, from: theGames) {
                 AppData.games = decoded
+            }
+        }
+        
+        if let theTeams = UserDefaults.standard.data(forKey: "teams") {
+            let decoder = JSONDecoder()
+            if let decoded = try? decoder.decode([Team].self, from: theTeams) {
+                AppData.teams = decoded
             }
         }
         

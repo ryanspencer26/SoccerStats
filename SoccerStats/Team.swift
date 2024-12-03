@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Team {
+class Team: Codable {
     
     var name: String
     var wins: Int
@@ -20,6 +20,14 @@ class Team {
         wins = 0
         losses = 0
         wlRatio = 0
+        players = [Player]()
+    }
+    
+    init(name: String, wins: Int, losses: Int){
+        self.name = name
+        self.wins = wins
+        self.losses = losses
+        wlRatio = Double(wins) / Double(losses)
         players = [Player]()
     }
     
