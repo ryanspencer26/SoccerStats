@@ -135,10 +135,10 @@
             </objects>
             <point key="canvasLocation" x="1831" y="39"/>
         </scene>
-        <!--Item-->
+        <!--AddTeam-->
         <scene sceneID="ciB-is-c8E">
             <objects>
-                <viewController id="ZGR-z5-kNM" customClass="TeamAddViewController" customModule="SoccerStats" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="AddTeam" id="ZGR-z5-kNM" customClass="TeamAddViewController" customModule="SoccerStats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wCt-If-dOP">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -202,9 +202,11 @@
                         <outlet property="lossField" destination="mhM-K3-hbn" id="jAT-54-eyX"/>
                         <outlet property="nameField" destination="ggC-7r-Jlg" id="ZpF-z0-hxL"/>
                         <outlet property="winField" destination="Ex9-px-dmb" id="42y-jf-34M"/>
+                        <segue destination="Phs-nB-cdT" kind="unwind" identifier="undwindTeam" unwindAction="unwind:" id="jaQ-bl-Diz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="79H-9b-yye" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Phs-nB-cdT" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="ovm-Jm-DcQ">
                     <connections>
                         <action selector="tapRecognized:" destination="ZGR-z5-kNM" id="Pfj-CX-EBe"/>
@@ -286,6 +288,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qqi-sM-KHi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1829.7709923664122" y="-635.21126760563379"/>
+        </scene>
+        <!--Team Info View Controller-->
+        <scene sceneID="Npa-iv-OBN">
+            <objects>
+                <viewController id="rNf-vG-ht5" customClass="TeamInfoViewController" customModule="SoccerStats" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EYK-sb-c52">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tsO-wP-pLM">
+                                <rect key="frame" x="0.0" y="209" width="393" height="609"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4Si-ox-6q7">
+                                <rect key="frame" x="16" y="59" width="200" height="142"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PCQ-61-G2e"/>
+                        <color key="backgroundColor" systemColor="systemGray3Color"/>
+                        <constraints>
+                            <constraint firstItem="PCQ-61-G2e" firstAttribute="bottom" secondItem="tsO-wP-pLM" secondAttribute="bottom" id="Avb-45-INE"/>
+                            <constraint firstItem="tsO-wP-pLM" firstAttribute="leading" secondItem="PCQ-61-G2e" secondAttribute="leading" id="Zyg-2e-WLt"/>
+                            <constraint firstItem="tsO-wP-pLM" firstAttribute="top" secondItem="PCQ-61-G2e" secondAttribute="top" constant="150" id="qCe-eI-KLX"/>
+                            <constraint firstItem="PCQ-61-G2e" firstAttribute="trailing" secondItem="tsO-wP-pLM" secondAttribute="trailing" id="wl8-Y6-71q"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jjY-gO-1DD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2500" y="-741.54929577464793"/>
         </scene>
         <!--Add Game View Controller-->
         <scene sceneID="Ea4-Xi-SDG">
@@ -491,9 +524,11 @@
                         <outlet property="homeSavesLabel" destination="gr6-aN-lfX" id="m31-cN-217"/>
                         <outlet property="homeShotStepper" destination="tBI-c9-N4Q" id="nra-TR-NCy"/>
                         <outlet property="homeShotsLabel" destination="N0T-MA-61g" id="ejn-8O-fc5"/>
+                        <segue destination="fjh-C6-Bnr" kind="unwind" identifier="unwindGame" unwindAction="unwind:" id="loo-wT-9bF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ah5-CG-E1i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="fjh-C6-Bnr" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="6XC-zb-XuS">
                     <connections>
                         <action selector="tapRecognized:" destination="dc6-F9-wfT" id="5Ap-uw-1KY"/>
@@ -617,9 +652,6 @@
                                             </children>
                                         </menu>
                                         <state key="normal" title="Home"/>
-                                        <connections>
-                                            <action selector="homePop:" destination="XPR-yu-Yls" eventType="valueChanged" id="cg4-Vy-Fsy"/>
-                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Home)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iJ-SY-bnx">
                                         <rect key="frame" x="0.0" y="54.666666666666679" width="196" height="20.333333333333336"/>
@@ -747,9 +779,6 @@
                                             </children>
                                         </menu>
                                         <state key="normal" title="Away"/>
-                                        <connections>
-                                            <action selector="awayPop:" destination="XPR-yu-Yls" eventType="valueChanged" id="fJu-4j-wY9"/>
-                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Away)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fcq-tR-SeT">
                                         <rect key="frame" x="0.0" y="54.666666666666679" width="196" height="20.333333333333336"/>
@@ -1193,9 +1222,11 @@
                         <outlet property="numberField" destination="MNV-7R-qN7" id="2oN-Hl-qTW"/>
                         <outlet property="segmentControl" destination="wjx-sb-Ut5" id="9mO-pQ-WP1"/>
                         <outlet property="yearField" destination="RtI-Cl-JEh" id="sTa-ft-KM2"/>
+                        <segue destination="yNK-V1-iBV" kind="unwind" identifier="unwindPlayer" unwindAction="unwind:" id="mD3-E9-cB4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jfz-bj-vLu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="yNK-V1-iBV" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="9yA-b3-E1x">
                     <connections>
                         <action selector="tapRecognized:" destination="4C2-pw-vSz" id="nVS-60-9ce"/>
@@ -1284,13 +1315,13 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

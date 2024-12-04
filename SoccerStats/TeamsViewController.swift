@@ -20,8 +20,8 @@ class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         teamTable.reloadData()
-        print(AppData.teams.count)
     }
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,8 +41,15 @@ class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let encoder = JSONEncoder()
             if let encoded = try? encoder.encode(AppData.teams) { UserDefaults.standard.set(encoded, forKey: "teams")
             }
-            tableView.reloadData()
+            teamTable.reloadData()
         }
+    }
+    
+    @IBAction func unwind(_ seg: UIStoryboardSegue){
+        
+        print("unwind")
+        teamTable.reloadData()
+        
     }
     
 

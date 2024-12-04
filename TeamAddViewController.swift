@@ -21,6 +21,10 @@ class TeamAddViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        performSegue(withIdentifier: "undwindTeam", sender: self)
+    }
     
     @IBAction func addTeam(_ sender: Any) {
         if nameField.text! != "" {
@@ -30,6 +34,7 @@ class TeamAddViewController: UIViewController {
                     let encoder = JSONEncoder()
                     if let encoded = try? encoder.encode(AppData.teams) { UserDefaults.standard.set(encoded, forKey: "teams")
                     }
+                    
                     self.dismiss(animated: true)
                 }
             }

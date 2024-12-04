@@ -74,7 +74,7 @@ class AddGameViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        presentingViewController?.viewWillAppear(true)
+        performSegue(withIdentifier: "unwindGame", sender: self)
     }
     
     @IBAction func tapRecognized(_ sender: Any) {

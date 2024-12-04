@@ -46,4 +46,9 @@ class GamesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    @IBAction func unwind(_ seg: UIStoryboardSegue){
+        print("unwind")
+        tableView.reloadData()
+    }
+    
 }

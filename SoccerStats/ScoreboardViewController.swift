@@ -268,13 +268,4 @@ class ScoreboardViewController: UIViewController {
         AppData.awayCorners = 0
     }
     
-    
-    @IBAction func homePop(_ sender: Any) {
-        setAwayPopUpButton()
-    }
-    
-    @IBAction func awayPop(_ sender: Any) {
-        setHomePopUpButton()
-    }
-    
 }

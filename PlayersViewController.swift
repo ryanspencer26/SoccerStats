@@ -49,4 +49,9 @@ class PlayersViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    @IBAction func unwind(_ seg: UIStoryboardSegue){
+        print("unwind")
+        tableView.reloadData()
+    }
+    
 }

@@ -25,7 +25,7 @@ class AddPlayerViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        presentingViewController?.viewWillAppear(true)
+        performSegue(withIdentifier: "unwindPlayer", sender: self)
     }
     
     @IBAction func addPlayer(_ sender: Any) {
