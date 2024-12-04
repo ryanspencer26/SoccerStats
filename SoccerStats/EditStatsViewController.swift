@@ -59,9 +59,11 @@ class EditStatsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             if AppData.players[playerPicker.selectedRow(inComponent: 0)].team == "Home"{
                 AppData.homeSOG += 1
                 AppData.homeShots += 1
+                AppData.awaySaves += 1
             } else {
                 AppData.awaySOG += 1
                 AppData.awayShots += 1
+                AppData.homeSaves += 1
             }
         } else if segmentControl.selectedSegmentIndex == 2 {
             AppData.players[playerPicker.selectedRow(inComponent: 0)].saves += 1

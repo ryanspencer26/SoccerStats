@@ -13,6 +13,7 @@ class ScoreboardViewController: UIViewController {
     var timer: Timer!
     var live: Bool = false
     var timerStarted: Bool = false
+    var firstRun: Bool = false
     @IBOutlet weak var awayScoreLabel: UILabel!
     @IBOutlet weak var awayShotLabel: UILabel!
     @IBOutlet weak var awaySOGLabel: UILabel!
@@ -26,16 +27,17 @@ class ScoreboardViewController: UIViewController {
     @IBOutlet weak var homePopUp: UIButton!
     @IBOutlet weak var awayPopUp: UIButton!
     
-    
-    
     var gameOver: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setHomePopUpButton()
-        setAwayPopUpButton()
+        if AppData.teams.count > 2 && !firstRun {
+            setHomePopUpButton()
+            setAwayPopUpButton()
+            firstRun = true
+        }
         
     }
     
@@ -51,16 +53,18 @@ class ScoreboardViewController: UIViewController {
 
         // loop and populate the actions array
         for team in AppData.teams {
-            if awayPopUp.currentTitle != team.name{
-                let action = UIAction(title: team.name, handler: optionClosure)
-                        
-                // add newly created action to actions array
-                optionsArray.append(action)
-            }
+            let action = UIAction(title: team.name, handler: optionClosure)
+                    
+            // add newly created action to actions array
+            optionsArray.append(action)
         }
-                
-                
-        // set the state of first team in the array as ON
+        
+        if firstRun == false{
+            optionsArray.insert(UIAction(title: "Pick Team", handler: optionClosure), at: 0)
+        }
+        
+        print(optionsArray[0].title)
+        
         optionsArray[0].state = .on
 
         // create an options menu
@@ -87,17 +91,18 @@ class ScoreboardViewController: UIViewController {
 
         // loop and populate the actions array
         for team in AppData.teams {
-            // create each action and insert the right country as a title
-            if homePopUp.currentTitle != team.name{
-                let action = UIAction(title: team.name, handler: optionClosure)
-                        
-                // add newly created action to actions array
-                optionsArray.append(action)
-            }
+            let action = UIAction(title: team.name, handler: optionClosure)
+                    
+            // add newly created action to actions array
+            optionsArray.append(action)
         }
-                
-                
-        // set the state of first team in the array as ON
+        
+        if firstRun == false {
+            optionsArray.insert(UIAction(title: "Pick Team", handler: optionClosure), at: 0)
+        }
+        
+        print(optionsArray[0].title)
+        
         optionsArray[0].state = .on
 
         // create an options menu
@@ -189,11 +194,18 @@ class ScoreboardViewController: UIViewController {
     }
     
     @IBAction func startTimer(_ sender: Any) {
-        if !timerStarted{
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
-            timerStarted = true
+        if homePopUp.currentTitle != "Pick Team" && awayPopUp.currentTitle != "Pick Team" && homePopUp.currentTitle != awayPopUp.currentTitle {
+            if !timerStarted{
+                timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+                timerStarted = true
+            }
+            live = true
+        } else {
+            let alert = UIAlertController(title: "Error", message: "You must select 2 unique teams.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
         }
-        live = true
     }
     
     @IBAction func pauseTimer(_ sender: Any) {
@@ -202,8 +214,6 @@ class ScoreboardViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setHomePopUpButton()
-        setAwayPopUpButton()
         awayScoreLabel.text = "\(AppData.awayScore)"
         homeScoreLabel.text = "\(AppData.homeScore)"
         awayShotLabel.text = "\(AppData.awayShots)"
@@ -220,7 +230,7 @@ class ScoreboardViewController: UIViewController {
     @IBAction func saveAction(_ sender: Any) {
         if gameOver{
             saveGame()
-        } else {
+        } else if timerStarted {
             let alert = UIAlertController(title: "Warning", message: "The game is not finished. Are you sure you want to save the current game?", preferredStyle: .alert)
             let yesAction = UIAlertAction(title: "Yes", style: .destructive) { (action) in
                 self.saveGame()
@@ -230,6 +240,11 @@ class ScoreboardViewController: UIViewController {
             let noAction = UIAlertAction(title: "No", style: .default, handler: nil)
             alert.addAction(yesAction)
             alert.addAction(noAction)
+            present(alert, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Error", message: "Game not started", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alert.addAction(okAction)
             present(alert, animated: true, completion: nil)
         }
     }
@@ -251,6 +266,15 @@ class ScoreboardViewController: UIViewController {
         AppData.awaySaves = 0
         AppData.homeCorners = 0
         AppData.awayCorners = 0
+    }
+    
+    
+    @IBAction func homePop(_ sender: Any) {
+        setAwayPopUpButton()
+    }
+    
+    @IBAction func awayPop(_ sender: Any) {
+        setHomePopUpButton()
     }
     
 }
