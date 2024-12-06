@@ -22,7 +22,7 @@ class AppData{
     static var homeCorners = 0
     static var awayCorners = 0
     static var games: [Game] = [Game]()
-    static var teams: [Team] = [Team]()
+    static var teams = [Team]()
     static var index: Int!
     static var currentHome: String!
     static var currentAway: String!
@@ -55,6 +55,8 @@ class ViewController: UIViewController {
                 AppData.teams = decoded
             }
         }
+        
+        print(AppData.teams)
         
     }
 

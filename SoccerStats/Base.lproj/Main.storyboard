@@ -202,7 +202,7 @@
                         <outlet property="lossField" destination="mhM-K3-hbn" id="jAT-54-eyX"/>
                         <outlet property="nameField" destination="ggC-7r-Jlg" id="ZpF-z0-hxL"/>
                         <outlet property="winField" destination="Ex9-px-dmb" id="42y-jf-34M"/>
-                        <segue destination="Phs-nB-cdT" kind="unwind" identifier="undwindTeam" unwindAction="unwind:" id="jaQ-bl-Diz"/>
+                        <segue destination="Phs-nB-cdT" kind="unwind" identifier="unwindTeam" unwindAction="unwindT:" id="a3J-Av-xBF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="79H-9b-yye" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -524,7 +524,7 @@
                         <outlet property="homeSavesLabel" destination="gr6-aN-lfX" id="m31-cN-217"/>
                         <outlet property="homeShotStepper" destination="tBI-c9-N4Q" id="nra-TR-NCy"/>
                         <outlet property="homeShotsLabel" destination="N0T-MA-61g" id="ejn-8O-fc5"/>
-                        <segue destination="fjh-C6-Bnr" kind="unwind" identifier="unwindGame" unwindAction="unwind:" id="loo-wT-9bF"/>
+                        <segue destination="fjh-C6-Bnr" kind="unwind" identifier="unwindGame" unwindAction="unwindG:" id="loo-wT-9bF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ah5-CG-E1i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1222,7 +1222,7 @@
                         <outlet property="numberField" destination="MNV-7R-qN7" id="2oN-Hl-qTW"/>
                         <outlet property="segmentControl" destination="wjx-sb-Ut5" id="9mO-pQ-WP1"/>
                         <outlet property="yearField" destination="RtI-Cl-JEh" id="sTa-ft-KM2"/>
-                        <segue destination="yNK-V1-iBV" kind="unwind" identifier="unwindPlayer" unwindAction="unwind:" id="mD3-E9-cB4"/>
+                        <segue destination="yNK-V1-iBV" kind="unwind" identifier="unwindPlayer" unwindAction="unwindP:" id="mD3-E9-cB4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jfz-bj-vLu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -13,7 +13,6 @@ class ScoreboardViewController: UIViewController {
     var timer: Timer!
     var live: Bool = false
     var timerStarted: Bool = false
-    var firstRun: Bool = false
     @IBOutlet weak var awayScoreLabel: UILabel!
     @IBOutlet weak var awayShotLabel: UILabel!
     @IBOutlet weak var awaySOGLabel: UILabel!
@@ -33,11 +32,8 @@ class ScoreboardViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        if AppData.teams.count > 2 && !firstRun {
-            setHomePopUpButton()
-            setAwayPopUpButton()
-            firstRun = true
-        }
+        setHomePopUpButton()
+        setAwayPopUpButton()
         
     }
     
@@ -59,11 +55,7 @@ class ScoreboardViewController: UIViewController {
             optionsArray.append(action)
         }
         
-        if firstRun == false{
-            optionsArray.insert(UIAction(title: "Pick Team", handler: optionClosure), at: 0)
-        }
-        
-        print(optionsArray[0].title)
+        optionsArray.insert(UIAction(title: "Pick Team", handler: optionClosure), at: 0)
         
         optionsArray[0].state = .on
 
@@ -97,11 +89,7 @@ class ScoreboardViewController: UIViewController {
             optionsArray.append(action)
         }
         
-        if firstRun == false {
-            optionsArray.insert(UIAction(title: "Pick Team", handler: optionClosure), at: 0)
-        }
-        
-        print(optionsArray[0].title)
+        optionsArray.insert(UIAction(title: "Pick Team", handler: optionClosure), at: 0)
         
         optionsArray[0].state = .on
 
@@ -214,6 +202,10 @@ class ScoreboardViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        setHomePopUpButton()
+        setAwayPopUpButton()
+        
         awayScoreLabel.text = "\(AppData.awayScore)"
         homeScoreLabel.text = "\(AppData.homeScore)"
         awayShotLabel.text = "\(AppData.awayShots)"

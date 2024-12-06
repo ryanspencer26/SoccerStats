@@ -23,7 +23,7 @@ class TeamAddViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        performSegue(withIdentifier: "undwindTeam", sender: self)
+        performSegue(withIdentifier: "unwindTeam", sender: self)
     }
     
     @IBAction func addTeam(_ sender: Any) {
@@ -32,13 +32,14 @@ class TeamAddViewController: UIViewController {
                 if let losses = Int(lossField.text!){
                     AppData.teams.append(Team(name: nameField.text!, wins: wins, losses: losses))
                     let encoder = JSONEncoder()
-                    if let encoded = try? encoder.encode(AppData.teams) { UserDefaults.standard.set(encoded, forKey: "teams")
+                    if let encoded = try? encoder.encode(AppData.teams) {
+                        UserDefaults.standard.set(encoded, forKey: "teams")
                     }
-                    
                     self.dismiss(animated: true)
                 }
             }
         }
+        // alert user invalid input
     }
     
     @IBAction func tapRecognized(_ sender: Any) {
