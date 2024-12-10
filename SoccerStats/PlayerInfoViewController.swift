@@ -18,10 +18,10 @@ class PlayerInfoViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        playerLabel.text = "\(AppData.players[AppData.index].name) #\(AppData.players[AppData.index].number)"
-        goalsLabel.text = "\(AppData.players[AppData.index].goals) goals"
-        shotsLabel.text = "\(AppData.players[AppData.index].shots) shots"
-        shotsOnGoalLabel.text = "\(AppData.players[AppData.index].shotsOnGoal) shots on goal"
+        playerLabel.text = "\(AppData.teams[AppData.teamIndex].players[AppData.playerIndex].name) #\(AppData.teams[AppData.teamIndex].players[AppData.playerIndex].number)"
+        goalsLabel.text = "\(AppData.teams[AppData.teamIndex].players[AppData.playerIndex].goals) goals"
+        shotsLabel.text = "\(AppData.teams[AppData.teamIndex].players[AppData.playerIndex].shots) shots"
+        shotsOnGoalLabel.text = "\(AppData.teams[AppData.teamIndex].players[AppData.playerIndex].shotsOnGoal) shots on goal"
         
     }
     

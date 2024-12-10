@@ -32,11 +32,7 @@ class AddPlayerViewController: UIViewController {
         if let num = Int(numberField.text!){
             if let yr = Int(yearField.text!){
                 if nameField.text! != ""{
-                    if segmentControl.selectedSegmentIndex == 0{
-                        AppData.players.append(Player(name: nameField.text!, number: num, year: yr, team: "Home"))
-                    } else {
-                        AppData.players.append(Player(name: nameField.text!, number: num, year: yr, team: "Away"))
-                    }
+                    AppData.teams[AppData.teamIndex].players.append(Player(name: nameField.text!, number: num, year: yr, team: "\(AppData.teams[AppData.teamIndex].name)"))
                     let encoder = JSONEncoder()
                     if let encoded = try? encoder.encode(AppData.players) { UserDefaults.standard.set(encoded, forKey: "players")
                     }

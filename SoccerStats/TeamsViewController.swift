@@ -45,6 +45,11 @@ class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        AppData.teamIndex = indexPath.row
+        performSegue(withIdentifier: "teamInfoSegue", sender: self)
+    }
+    
     @IBAction func unwindT(_ seg: UIStoryboardSegue){
         
         print("unwind")
