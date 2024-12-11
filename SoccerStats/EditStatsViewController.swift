@@ -23,7 +23,9 @@ class EditStatsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         playerPicker.dataSource = self
         
         for player in AppData.players{
-            pickerData.append(player.name)
+            if player.team == AppData.currentHome || player.team == AppData.currentAway {
+                pickerData.append(player.name)
+            }
         }
         
     }
@@ -48,7 +50,7 @@ class EditStatsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBAction func submitAction(_ sender: Any) {
         if segmentControl.selectedSegmentIndex == 0 {
             AppData.players[playerPicker.selectedRow(inComponent: 0)].shots += 1
-            if AppData.players[playerPicker.selectedRow(inComponent: 0)].team == "Home"{
+            if AppData.players[playerPicker.selectedRow(inComponent: 0)].team == AppData.currentHome {
                 AppData.homeShots += 1
             } else {
                 AppData.awayShots += 1
@@ -56,7 +58,7 @@ class EditStatsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         } else if segmentControl.selectedSegmentIndex == 1 {
             AppData.players[playerPicker.selectedRow(inComponent: 0)].shotsOnGoal += 1
             AppData.players[playerPicker.selectedRow(inComponent: 0)].shots += 1
-            if AppData.players[playerPicker.selectedRow(inComponent: 0)].team == "Home"{
+            if AppData.players[playerPicker.selectedRow(inComponent: 0)].team == AppData.currentHome {
                 AppData.homeSOG += 1
                 AppData.homeShots += 1
                 AppData.awaySaves += 1
@@ -67,20 +69,17 @@ class EditStatsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             }
         } else if segmentControl.selectedSegmentIndex == 2 {
             AppData.players[playerPicker.selectedRow(inComponent: 0)].saves += 1
-            if AppData.players[playerPicker.selectedRow(inComponent: 0)].team == "Home"{
+            if AppData.players[playerPicker.selectedRow(inComponent: 0)].team == AppData.currentHome {
                 AppData.homeSaves += 1
             } else {
                 AppData.awaySaves += 1
             }
         } else {
-            if AppData.players[playerPicker.selectedRow(inComponent: 0)].team == "Home"{
+            if AppData.players[playerPicker.selectedRow(inComponent: 0)].team == AppData.currentHome {
                 AppData.homeCorners += 1
             } else {
                 AppData.awayCorners += 1
             }
-        }
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(AppData.players) { UserDefaults.standard.set(encoded, forKey: "players")
         }
         self.dismiss(animated: true)
     }

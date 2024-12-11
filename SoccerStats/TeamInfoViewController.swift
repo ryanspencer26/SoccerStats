@@ -51,5 +51,10 @@ class TeamInfoViewController: UIViewController, UITableViewDataSource, UITableVi
             tableView.reloadData()
         }
     }
+    
+    @IBAction func unwindP(_ seg: UIStoryboardSegue){
+        print("unwind")
+        tableView.reloadData()
+    }
 
 }

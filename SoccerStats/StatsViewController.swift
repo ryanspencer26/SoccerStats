@@ -23,15 +23,19 @@ class StatsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         playerPicker.dataSource = self
 
         // Do any additional setup after loading the view.
+        
+        segmentControl.setTitle(AppData.currentHome, forSegmentAt: 0)
+        segmentControl.setTitle(AppData.currentAway, forSegmentAt: 1)
+        
         if segmentControl.selectedSegmentIndex == 0 {
             for player in AppData.players{
-                if player.team == "Home"{
+                if player.team == AppData.currentHome {
                     pickerData.append(player.name)
                 }
             }
         } else {
             for player in AppData.players{
-                if player.team == "Away"{
+                if player.team == AppData.currentAway {
                     pickerData.append(player.name)
                 }
             }
@@ -65,9 +69,6 @@ class StatsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 break
             }
         }
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(AppData.players) { UserDefaults.standard.set(encoded, forKey: "players")
-        }
         if segmentControl.selectedSegmentIndex == 0{
             AppData.homeScore += 1
             AppData.homeShots += 1
@@ -87,7 +88,7 @@ class StatsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         case 0:
             pickerData = [String]()
             for player in AppData.players{
-                if player.team == "Home"{
+                if player.team == AppData.currentHome {
                     pickerData.append(player.name)
                 }
             }
@@ -95,7 +96,7 @@ class StatsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         case 1:
             pickerData = [String]()
             for player in AppData.players{
-                if player.team == "Away"{
+                if player.team == AppData.currentAway {
                     pickerData.append(player.name)
                 }
             }

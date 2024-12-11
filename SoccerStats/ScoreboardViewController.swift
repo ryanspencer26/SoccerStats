@@ -160,20 +160,22 @@ class ScoreboardViewController: UIViewController {
             present(alert, animated: true, completion: nil)
             return
         }
-        if AppData.players.count >= 4{
-            var homePlayers = 0
-            var awayPlayers = 0
-            for player in AppData.players{
-                if player.team == "Home"{
-                    homePlayers += 1
-                } else {
-                    awayPlayers += 1
+        var homePlayers = false
+        var awayPlayers = false
+        for team in AppData.teams {
+            if team.name == AppData.currentHome{
+                if team.players.count >= 2 {
+                    homePlayers = true
+                }
+            } else if team.name == AppData.currentAway{
+                if team.players.count >= 2{
+                    awayPlayers = true
                 }
             }
-            if homePlayers >= 2 && awayPlayers >= 2{
-                performSegue(withIdentifier: "editStatSegue", sender: self)
-                return
-            }
+        }
+        if homePlayers && awayPlayers {
+            performSegue(withIdentifier: "editStatSegue", sender: self)
+            return
         }
         let alert = UIAlertController(title: "Error", message: "You must have 2+ players registered for each team.", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
@@ -188,6 +190,8 @@ class ScoreboardViewController: UIViewController {
                 timerStarted = true
             }
             live = true
+            homePopUp.isPointerInteractionEnabled = false
+            awayPopUp.isPointerInteractionEnabled = false
         } else {
             let alert = UIAlertController(title: "Error", message: "You must select 2 unique teams.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
@@ -245,6 +249,12 @@ class ScoreboardViewController: UIViewController {
         AppData.games.append(Game(homeScore: AppData.homeScore, awayScore: AppData.awayScore, homeShots: AppData.homeSaves, awayShots: AppData.awayShots, homeSOG: AppData.homeSOG, awaySOG: AppData.awaySOG, homeSaves: AppData.homeSaves, awaySaves: AppData.awaySaves, homeCorners: AppData.homeCorners, awayCorners: AppData.awayCorners))
         // save to userDefaults
         let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(AppData.players){
+            UserDefaults.standard.set(encoded, forKey: "players")
+        }
+        if let encoded = try? encoder.encode(AppData.teams){
+            UserDefaults.standard.set(encoded, forKey: "teams")
+        }
         if let encoded = try? encoder.encode(AppData.games) { UserDefaults.standard.set(encoded, forKey: "games")
         }
         print("game saved")
