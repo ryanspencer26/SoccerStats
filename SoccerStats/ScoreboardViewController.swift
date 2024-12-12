@@ -185,15 +185,15 @@ class ScoreboardViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func startTimer(_ sender: Any) {
+    @IBAction func startTimer(_ sender: UIButton) {
         if homePopUp.currentTitle != "Pick Team" && awayPopUp.currentTitle != "Pick Team" && homePopUp.currentTitle != awayPopUp.currentTitle {
             if !timerStarted{
                 timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
                 timerStarted = true
             }
             live = true
-            homePopUp.isPointerInteractionEnabled = false
-            awayPopUp.isPointerInteractionEnabled = false
+            homePopUp.isUserInteractionEnabled = false
+            awayPopUp.isUserInteractionEnabled = false
         } else {
             let alert = UIAlertController(title: "Error", message: "You must select 2 unique teams.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)

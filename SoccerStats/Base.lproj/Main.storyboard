@@ -1351,7 +1351,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home vs Away" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Jg-nj-nXi">
-                                <rect key="frame" x="22" y="179" width="350" height="42"/>
+                                <rect key="frame" x="28.666666666666657" y="179" width="350" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="350" id="4JR-zD-vuL"/>
                                     <constraint firstAttribute="height" constant="42" id="DMb-aL-zM5"/>
@@ -1361,7 +1361,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0-0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDI-Pf-bU4">
-                                <rect key="frame" x="162" y="229" width="67.666666666666686" height="48"/>
+                                <rect key="frame" x="162" y="229" width="67" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="67" id="7HM-tf-33D"/>
                                     <constraint firstAttribute="height" constant="48" id="nNq-aJ-ub8"/>
@@ -1371,7 +1371,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ij9-ZO-shk">
-                                <rect key="frame" x="166" y="630" width="61.666666666666657" height="34.333333333333371"/>
+                                <rect key="frame" x="166" y="630" width="75" height="34.333333333333371"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="fGt-Kb-hDp"/>
                                     <constraint firstAttribute="height" constant="34.333333333333371" id="j53-AF-SbE"/>
@@ -1389,15 +1389,13 @@
                         <constraints>
                             <constraint firstItem="Ij9-ZO-shk" firstAttribute="top" secondItem="EoS-J0-7nA" secondAttribute="bottom" constant="26" id="3eF-U4-ZL3"/>
                             <constraint firstItem="vhc-mV-4Qz" firstAttribute="top" secondItem="EoS-J0-7nA" secondAttribute="top" id="4YX-AZ-2Gm"/>
-                            <constraint firstItem="1Jg-nj-nXi" firstAttribute="centerX" secondItem="rPA-9h-qs8" secondAttribute="centerX" id="6fZ-sZ-930"/>
-                            <constraint firstItem="Ij9-ZO-shk" firstAttribute="leading" secondItem="aSs-vi-Psi" secondAttribute="leading" constant="166" id="Gmc-XN-05o"/>
+                            <constraint firstItem="Ij9-ZO-shk" firstAttribute="centerX" secondItem="1Jg-nj-nXi" secondAttribute="centerX" id="Mcf-g4-xK2"/>
+                            <constraint firstItem="UDI-Pf-bU4" firstAttribute="leading" secondItem="aSs-vi-Psi" secondAttribute="leading" constant="162" id="S1A-7U-GfD"/>
                             <constraint firstItem="vhc-mV-4Qz" firstAttribute="leading" secondItem="rPA-9h-qs8" secondAttribute="leading" id="STB-eT-nPt"/>
-                            <constraint firstItem="1Jg-nj-nXi" firstAttribute="centerX" secondItem="Ij9-ZO-shk" secondAttribute="centerX" id="ZUm-T0-GR3"/>
                             <constraint firstItem="EoS-J0-7nA" firstAttribute="top" secondItem="UDI-Pf-bU4" secondAttribute="bottom" constant="8" id="iJd-Ca-VRO"/>
-                            <constraint firstItem="aSs-vi-Psi" firstAttribute="trailing" secondItem="UDI-Pf-bU4" secondAttribute="trailing" constant="164" id="nhF-PN-oah"/>
+                            <constraint firstItem="Ij9-ZO-shk" firstAttribute="leading" secondItem="aSs-vi-Psi" secondAttribute="leading" constant="166" id="nMj-7H-Llh"/>
                             <constraint firstItem="UDI-Pf-bU4" firstAttribute="top" secondItem="1Jg-nj-nXi" secondAttribute="bottom" constant="8" symbolic="YES" id="s99-2I-qIL"/>
                             <constraint firstItem="EoS-J0-7nA" firstAttribute="leading" secondItem="vhc-mV-4Qz" secondAttribute="trailing" constant="1" id="sXV-Rz-k3c"/>
-                            <constraint firstItem="UDI-Pf-bU4" firstAttribute="leading" secondItem="aSs-vi-Psi" secondAttribute="leading" constant="162" id="tR6-Gg-NLD"/>
                             <constraint firstItem="1Jg-nj-nXi" firstAttribute="top" secondItem="aSs-vi-Psi" secondAttribute="top" constant="179" id="yf9-Uv-a5L"/>
                         </constraints>
                     </view>
