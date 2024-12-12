@@ -9,6 +9,8 @@ import Foundation
 
 class Game: Codable {
     
+    var homeTeam: String
+    var awayTeam: String
     var homeScore: Int
     var awayScore: Int
     var homeShots: Int
@@ -20,7 +22,9 @@ class Game: Codable {
     var homeCorners: Int
     var awayCorners: Int
     
-    init(homeScore: Int, awayScore: Int, homeShots: Int, awayShots: Int, homeSOG: Int, awaySOG: Int, homeSaves: Int, awaySaves: Int, homeCorners: Int, awayCorners: Int) {
+    init(homeTeam: String, awayTeam: String, homeScore: Int, awayScore: Int, homeShots: Int, awayShots: Int, homeSOG: Int, awaySOG: Int, homeSaves: Int, awaySaves: Int, homeCorners: Int, awayCorners: Int) {
+        self.homeTeam = homeTeam
+        self.awayTeam = awayTeam
         self.homeScore = homeScore
         self.awayScore = awayScore
         self.homeShots = homeShots

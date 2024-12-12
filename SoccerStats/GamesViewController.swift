@@ -20,18 +20,13 @@ class GamesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.reloadData()
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         AppData.games.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell")!
-        cell.textLabel?.text = "Home vs Away"
+        cell.textLabel?.text = "\(AppData.games[indexPath.row].homeTeam) vs. \(AppData.games[indexPath.row].awayTeam)"
         cell.detailTextLabel?.text = "\(AppData.games[indexPath.row].homeScore)-\(AppData.games[indexPath.row].awayScore)"
         return cell
     }
@@ -44,6 +39,11 @@ class GamesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             tableView.reloadData()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        AppData.gameIndex = indexPath.row
+        performSegue(withIdentifier: "gameInfoSegue", sender: self)
     }
     
     @IBAction func unwindG(_ seg: UIStoryboardSegue){

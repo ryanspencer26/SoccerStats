@@ -13,6 +13,8 @@ class EditStatsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     var pickerData: [String] = [String]()
     
+    var possiblePlayers: [Player] = [Player]()
+    
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
     override func viewDidLoad() {
@@ -22,9 +24,12 @@ class EditStatsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         playerPicker.delegate = self
         playerPicker.dataSource = self
         
-        for player in AppData.players{
-            if player.team == AppData.currentHome || player.team == AppData.currentAway {
-                pickerData.append(player.name)
+        for team in AppData.teams {
+            if team.name == AppData.currentHome || team.name == AppData.currentAway{
+                for player in team.players{
+                    pickerData.append(player.name)
+                    possiblePlayers.append(player)
+                }
             }
         }
         
@@ -32,7 +37,7 @@ class EditStatsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        presentingViewController?.viewWillAppear(true)
+        performSegue(withIdentifier: "unwindStats", sender: self)
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -49,16 +54,16 @@ class EditStatsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     @IBAction func submitAction(_ sender: Any) {
         if segmentControl.selectedSegmentIndex == 0 {
-            AppData.players[playerPicker.selectedRow(inComponent: 0)].shots += 1
-            if AppData.players[playerPicker.selectedRow(inComponent: 0)].team == AppData.currentHome {
+            possiblePlayers[playerPicker.selectedRow(inComponent: 0)].shots += 1
+            if possiblePlayers[playerPicker.selectedRow(inComponent: 0)].team == AppData.currentHome {
                 AppData.homeShots += 1
             } else {
                 AppData.awayShots += 1
             }
         } else if segmentControl.selectedSegmentIndex == 1 {
-            AppData.players[playerPicker.selectedRow(inComponent: 0)].shotsOnGoal += 1
-            AppData.players[playerPicker.selectedRow(inComponent: 0)].shots += 1
-            if AppData.players[playerPicker.selectedRow(inComponent: 0)].team == AppData.currentHome {
+            possiblePlayers[playerPicker.selectedRow(inComponent: 0)].shotsOnGoal += 1
+            possiblePlayers[playerPicker.selectedRow(inComponent: 0)].shots += 1
+            if possiblePlayers[playerPicker.selectedRow(inComponent: 0)].team == AppData.currentHome {
                 AppData.homeSOG += 1
                 AppData.homeShots += 1
                 AppData.awaySaves += 1
@@ -68,14 +73,14 @@ class EditStatsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                 AppData.homeSaves += 1
             }
         } else if segmentControl.selectedSegmentIndex == 2 {
-            AppData.players[playerPicker.selectedRow(inComponent: 0)].saves += 1
-            if AppData.players[playerPicker.selectedRow(inComponent: 0)].team == AppData.currentHome {
+            possiblePlayers[playerPicker.selectedRow(inComponent: 0)].saves += 1
+            if possiblePlayers[playerPicker.selectedRow(inComponent: 0)].team == AppData.currentHome {
                 AppData.homeSaves += 1
             } else {
                 AppData.awaySaves += 1
             }
         } else {
-            if AppData.players[playerPicker.selectedRow(inComponent: 0)].team == AppData.currentHome {
+            if possiblePlayers[playerPicker.selectedRow(inComponent: 0)].team == AppData.currentHome {
                 AppData.homeCorners += 1
             } else {
                 AppData.awayCorners += 1

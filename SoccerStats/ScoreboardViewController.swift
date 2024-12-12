@@ -131,20 +131,22 @@ class ScoreboardViewController: UIViewController {
             present(alert, animated: true, completion: nil)
             return
         }
-        if AppData.players.count >= 4{
-            var homePlayers = 0
-            var awayPlayers = 0
-            for player in AppData.players{
-                if player.team == "Home"{
-                    homePlayers += 1
-                } else {
-                    awayPlayers += 1
+        var homePlayers = false
+        var awayPlayers = false
+        for team in AppData.teams {
+            if team.name == AppData.currentHome{
+                if team.players.count >= 2 {
+                    homePlayers = true
+                }
+            } else if team.name == AppData.currentAway{
+                if team.players.count >= 2{
+                    awayPlayers = true
                 }
             }
-            if homePlayers >= 2 && awayPlayers >= 2{
-                performSegue(withIdentifier: "addGoalSegue", sender: self)
-                return
-            }
+        }
+        if homePlayers && awayPlayers {
+            performSegue(withIdentifier: "addGoalSegue", sender: self)
+            return
         }
         let alert = UIAlertController(title: "Error", message: "You must have 2+ players registered for each team.", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
@@ -204,25 +206,6 @@ class ScoreboardViewController: UIViewController {
         live = false
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        setHomePopUpButton()
-        setAwayPopUpButton()
-        
-        awayScoreLabel.text = "\(AppData.awayScore)"
-        homeScoreLabel.text = "\(AppData.homeScore)"
-        awayShotLabel.text = "\(AppData.awayShots)"
-        homeShotLabel.text = "\(AppData.homeShots)"
-        awaySOGLabel.text = "\(AppData.awaySOG)"
-        homeSOGLabel.text = "\(AppData.homeSOG)"
-        awaySaveLabel.text = "\(AppData.awaySaves)"
-        homeSaveLabel.text = "\(AppData.homeSaves)"
-        awayCornerLabel.text = "\(AppData.awayCorners)"
-        homeCornerLabel.text = "\(AppData.homeCorners)"
-    }
-    
-    
     @IBAction func saveAction(_ sender: Any) {
         if gameOver{
             saveGame()
@@ -246,7 +229,7 @@ class ScoreboardViewController: UIViewController {
     }
     
     func saveGame(){
-        AppData.games.append(Game(homeScore: AppData.homeScore, awayScore: AppData.awayScore, homeShots: AppData.homeSaves, awayShots: AppData.awayShots, homeSOG: AppData.homeSOG, awaySOG: AppData.awaySOG, homeSaves: AppData.homeSaves, awaySaves: AppData.awaySaves, homeCorners: AppData.homeCorners, awayCorners: AppData.awayCorners))
+        AppData.games.append(Game(homeTeam: AppData.currentHome, awayTeam: AppData.currentAway, homeScore: AppData.homeScore, awayScore: AppData.awayScore, homeShots: AppData.homeSaves, awayShots: AppData.awayShots, homeSOG: AppData.homeSOG, awaySOG: AppData.awaySOG, homeSaves: AppData.homeSaves, awaySaves: AppData.awaySaves, homeCorners: AppData.homeCorners, awayCorners: AppData.awayCorners))
         // save to userDefaults
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(AppData.players){
@@ -268,6 +251,32 @@ class ScoreboardViewController: UIViewController {
         AppData.awaySaves = 0
         AppData.homeCorners = 0
         AppData.awayCorners = 0
+        setHomePopUpButton()
+        setAwayPopUpButton()
+        updateScreen()
+    }
+    
+    func updateScreen(){
+        awayScoreLabel.text = "\(AppData.awayScore)"
+        homeScoreLabel.text = "\(AppData.homeScore)"
+        awayShotLabel.text = "\(AppData.awayShots)"
+        homeShotLabel.text = "\(AppData.homeShots)"
+        awaySOGLabel.text = "\(AppData.awaySOG)"
+        homeSOGLabel.text = "\(AppData.homeSOG)"
+        awaySaveLabel.text = "\(AppData.awaySaves)"
+        homeSaveLabel.text = "\(AppData.homeSaves)"
+        awayCornerLabel.text = "\(AppData.awayCorners)"
+        homeCornerLabel.text = "\(AppData.homeCorners)"
+    }
+    
+    @IBAction func unwindS(_ seg: UIStoryboardSegue){
+        print("unwind")
+        updateScreen()
+    }
+    
+    @IBAction func unwindGo(_ seg: UIStoryboardSegue){
+        print("unwind")
+        updateScreen()
     }
     
 }

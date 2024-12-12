@@ -33,6 +33,11 @@ class AddGameViewController: UIViewController {
     @IBOutlet weak var awaySaveStepper: UIStepper!
     @IBOutlet weak var awayCornerStepper: UIStepper!
     
+    @IBOutlet weak var awayPopUp: UIButton!
+    @IBOutlet weak var homePopUp: UIButton!
+    
+    var homeName: String!
+    var awayName: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +74,9 @@ class AddGameViewController: UIViewController {
         awayCornerStepper.value = 0
         awayCornerStepper.minimumValue = 0
         awayCornerStepper.stepValue = 1
+        
+        setHomePopUpButton()
+        setAwayPopUpButton()
         
     }
     
@@ -121,6 +129,74 @@ class AddGameViewController: UIViewController {
         updateScreen()
     }
     
+    func setHomePopUpButton(){
+        
+        // create the closure
+        let optionClosure = {(action: UIAction) in
+            self.homeName = action.title
+        }
+
+        // create an array to store the actions
+        var optionsArray = [UIAction]()
+
+        // loop and populate the actions array
+        for team in AppData.teams {
+            let action = UIAction(title: team.name, handler: optionClosure)
+                    
+            // add newly created action to actions array
+            optionsArray.append(action)
+        }
+        
+        optionsArray.insert(UIAction(title: "Pick Team", handler: optionClosure), at: 0)
+        
+        optionsArray[0].state = .on
+
+        // create an options menu
+        let optionsMenu = UIMenu(title: "Home", options: .displayInline, children: optionsArray)
+                
+        // add everything to your button
+        homePopUp.menu = optionsMenu
+
+        // make sure the popup button shows the selected value
+        homePopUp.changesSelectionAsPrimaryAction = true
+        homePopUp.showsMenuAsPrimaryAction = true
+        
+    }
+    
+    func setAwayPopUpButton(){
+        
+        // create the closure
+        let optionClosure = {(action: UIAction) in
+            self.awayName = action.title
+        }
+
+        // create an array to store the actions
+        var optionsArray = [UIAction]()
+
+        // loop and populate the actions array
+        for team in AppData.teams {
+            let action = UIAction(title: team.name, handler: optionClosure)
+                    
+            // add newly created action to actions array
+            optionsArray.append(action)
+        }
+        
+        optionsArray.insert(UIAction(title: "Pick Team", handler: optionClosure), at: 0)
+        
+        optionsArray[0].state = .on
+
+        // create an options menu
+        let optionsMenu = UIMenu(title: "Away", options: .displayInline, children: optionsArray)
+                
+        // add everything to your button
+        awayPopUp.menu = optionsMenu
+
+        // make sure the popup button shows the selected value
+        awayPopUp.changesSelectionAsPrimaryAction = true
+        awayPopUp.showsMenuAsPrimaryAction = true
+        
+    }
+    
     func updateScreen(){
         homeGoalsLabel.text = "\(Int(homeGoalStepper.value)) goals"
         homeShotsLabel.text = "\(Int(homeShotStepper.value)) shots"
@@ -136,12 +212,17 @@ class AddGameViewController: UIViewController {
     }
     
     @IBAction func saveGame(_ sender: Any) {
-        AppData.games.append(Game(homeScore: Int(homeGoalStepper.value), awayScore: Int(awayGoalStepper.value), homeShots: Int(homeShotStepper.value), awayShots: Int(awayShotStepper.value), homeSOG: Int(homeSOGStepper.value), awaySOG: Int(awaySOGStepper.value), homeSaves: Int(homeSaveStepper.value), awaySaves: Int(awaySaveStepper.value), homeCorners: Int(homeCornerStepper.value), awayCorners: Int(awayCornerStepper.value)))
-        // save to userDefaults
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(AppData.games) { UserDefaults.standard.set(encoded, forKey: "games")
+        if homeName != "Pick Team" && awayName != "Pick Team" && homeName != awayName {
+            AppData.games.append(Game(homeTeam: homeName, awayTeam: awayName, homeScore: Int(homeGoalStepper.value), awayScore: Int(awayGoalStepper.value), homeShots: Int(homeShotStepper.value), awayShots: Int(awayShotStepper.value), homeSOG: Int(homeSOGStepper.value), awaySOG: Int(awaySOGStepper.value), homeSaves: Int(homeSaveStepper.value), awaySaves: Int(awaySaveStepper.value), homeCorners: Int(homeCornerStepper.value), awayCorners: Int(awayCornerStepper.value)))
+            // save to userDefaults
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(AppData.games) { UserDefaults.standard.set(encoded, forKey: "games")
+            }
+            self.dismiss(animated: true)
         }
-        self.dismiss(animated: true)
+        // alert user invalid input
     }
+    
+    
     
 }

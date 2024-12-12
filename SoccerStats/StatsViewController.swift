@@ -57,7 +57,7 @@ class StatsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        presentingViewController?.viewWillAppear(true)
+        performSegue(withIdentifier: "unwindGoal", sender: self)
     }
 
     @IBAction func submit(_ sender: Any) {
