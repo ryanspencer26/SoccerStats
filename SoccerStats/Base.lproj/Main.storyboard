@@ -1010,26 +1010,26 @@
                                             <action selector="startTimer:" destination="XPR-yu-Yls" eventType="touchUpInside" id="ZJB-CZ-SLS"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDy-5S-RHG">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnN-Lh-ldt">
                                         <rect key="frame" x="69" y="0.0" width="49" height="50"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="gray" image="soccerball.inverse" catalog="system">
-                                            <color key="baseForegroundColor" systemColor="systemGray3Color"/>
-                                            <color key="baseBackgroundColor" name="AccentColor"/>
+                                        <buttonConfiguration key="configuration" style="filled" image="stop.fill" catalog="system">
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" systemColor="systemRedColor"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="addGoalAction:" destination="XPR-yu-Yls" eventType="touchUpInside" id="6pw-vA-s68"/>
+                                            <action selector="pauseTimer:" destination="XPR-yu-Yls" eventType="touchUpInside" id="c6K-mZ-Rt6"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="reG-7u-vvu">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDc-Jd-wgV">
                                         <rect key="frame" x="138" y="0.0" width="49" height="50"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" image="square.and.arrow.down.fill" catalog="system">
+                                        <buttonConfiguration key="configuration" style="filled" image="restart.circle.fill" catalog="system">
                                             <color key="baseForegroundColor" systemColor="systemGray3Color"/>
                                             <color key="baseBackgroundColor" name="AccentColor"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="saveAction:" destination="XPR-yu-Yls" eventType="touchUpInside" id="oAB-yF-Ve2"/>
+                                            <action selector="restartGame:" destination="XPR-yu-Yls" eventType="touchUpInside" id="PLG-eK-vPi"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wuu-XW-h6p">
@@ -1043,15 +1043,15 @@
                                             <action selector="editStatAction:" destination="XPR-yu-Yls" eventType="touchUpInside" id="mW0-7Y-9Hb"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnN-Lh-ldt">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="reG-7u-vvu">
                                         <rect key="frame" x="276" y="0.0" width="49" height="50"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" image="stop.fill" catalog="system">
-                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="baseBackgroundColor" systemColor="systemRedColor"/>
+                                        <buttonConfiguration key="configuration" style="filled" image="square.and.arrow.down.fill" catalog="system">
+                                            <color key="baseForegroundColor" systemColor="systemGray3Color"/>
+                                            <color key="baseBackgroundColor" name="AccentColor"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="pauseTimer:" destination="XPR-yu-Yls" eventType="touchUpInside" id="c6K-mZ-Rt6"/>
+                                            <action selector="saveAction:" destination="XPR-yu-Yls" eventType="touchUpInside" id="oAB-yF-Ve2"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1105,75 +1105,11 @@
                         <outlet property="homeShotLabel" destination="lbR-P9-35H" id="1l4-5a-pKf"/>
                         <outlet property="timerLabel" destination="3Lo-uU-BlW" id="rhb-HJ-qDG"/>
                         <segue destination="wir-Cd-Mrd" kind="show" identifier="editStatSegue" id="qGx-NA-sEk"/>
-                        <segue destination="xfg-li-5pD" kind="show" identifier="addGoalSegue" id="Mxh-BL-CNf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zim-NZ-ANn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="646.56488549618314" y="669.71830985915494"/>
-        </scene>
-        <!--Stats View Controller-->
-        <scene sceneID="NyU-Sx-2VE">
-            <objects>
-                <viewController id="xfg-li-5pD" customClass="StatsViewController" customModule="SoccerStats" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="61w-mP-30h">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gGp-P9-qUt">
-                                <rect key="frame" x="36" y="261" width="320" height="325.33333333333326"/>
-                                <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RO7-We-d6j">
-                                        <rect key="frame" x="104.66666666666666" y="0.0" width="111" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="BXr-jv-uOj"/>
-                                        </constraints>
-                                        <segments>
-                                            <segment title="Home"/>
-                                            <segment title="Away"/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="indexSwitched:" destination="xfg-li-5pD" eventType="valueChanged" id="08u-C8-lrl"/>
-                                        </connections>
-                                    </segmentedControl>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YzM-e4-CRE">
-                                        <rect key="frame" x="0.0" y="55" width="320" height="216"/>
-                                    </pickerView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YuQ-zJ-I4M">
-                                        <rect key="frame" x="121" y="291" width="78" height="34.333333333333314"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="tinted" title="Submit"/>
-                                        <connections>
-                                            <action selector="submit:" destination="xfg-li-5pD" eventType="touchUpInside" id="zGp-Cq-iNP"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="c2K-Fw-4M1"/>
-                                    <constraint firstAttribute="height" constant="321.33333333333326" id="uvP-z2-L5U"/>
-                                </constraints>
-                            </stackView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="bHj-Ur-edl"/>
-                        <color key="backgroundColor" systemColor="systemGray3Color"/>
-                        <constraints>
-                            <constraint firstItem="bHj-Ur-edl" firstAttribute="bottom" secondItem="gGp-P9-qUt" secondAttribute="bottom" constant="259.67000000000002" id="EZI-sd-YFC"/>
-                            <constraint firstItem="bHj-Ur-edl" firstAttribute="trailing" secondItem="gGp-P9-qUt" secondAttribute="trailing" constant="37" id="LaH-On-zHP"/>
-                            <constraint firstItem="gGp-P9-qUt" firstAttribute="leading" secondItem="bHj-Ur-edl" secondAttribute="leading" constant="36" id="maa-Tq-dVl"/>
-                            <constraint firstItem="gGp-P9-qUt" firstAttribute="top" secondItem="bHj-Ur-edl" secondAttribute="top" constant="261" id="vUX-qR-d0Z"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="o5w-tG-sYZ"/>
-                    <connections>
-                        <outlet property="playerPicker" destination="YzM-e4-CRE" id="4AO-dJ-7mh"/>
-                        <outlet property="segmentControl" destination="RO7-We-d6j" id="bIv-Dg-1By"/>
-                        <segue destination="ib0-pD-UoX" kind="unwind" identifier="unwindGoal" unwindAction="unwindGo:" id="4TZ-3L-jvO"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eGv-dN-Phb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="ib0-pD-UoX" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="1409.9236641221373" y="722.53521126760563"/>
         </scene>
         <!--Game Info View Controller-->
         <scene sceneID="l6L-ZN-vIx">
@@ -1517,7 +1453,7 @@
                                 <rect key="frame" x="36" y="206.99999999999997" width="320" height="325.33333333333326"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M3B-sl-c7h">
-                                        <rect key="frame" x="36.666666666666686" y="0.0" width="247" height="36"/>
+                                        <rect key="frame" x="5.6666666666666572" y="0.0" width="309" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="dtd-xl-Llg"/>
                                         </constraints>
@@ -1526,6 +1462,7 @@
                                             <segment title="SOG"/>
                                             <segment title="Save"/>
                                             <segment title="Corner"/>
+                                            <segment title="Goal"/>
                                         </segments>
                                     </segmentedControl>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VIF-g9-Nv1">
@@ -1575,7 +1512,7 @@
         <image name="person.fill.badge.plus" catalog="system" width="128" height="126"/>
         <image name="play.fill" catalog="system" width="120" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="soccerball.inverse" catalog="system" width="128" height="123"/>
+        <image name="restart.circle.fill" catalog="system" width="128" height="123"/>
         <image name="soccerballtransparent" width="2787" height="2713"/>
         <image name="square.and.arrow.down.fill" catalog="system" width="121" height="128"/>
         <image name="square.and.arrow.down.on.square.fill" catalog="system" width="126" height="128"/>
@@ -1587,13 +1524,13 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

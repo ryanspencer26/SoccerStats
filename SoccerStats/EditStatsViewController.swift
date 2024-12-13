@@ -53,14 +53,18 @@ class EditStatsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     @IBAction func submitAction(_ sender: Any) {
-        if segmentControl.selectedSegmentIndex == 0 {
+        
+        switch segmentControl.selectedSegmentIndex {
+            
+        case 0:
             possiblePlayers[playerPicker.selectedRow(inComponent: 0)].shots += 1
             if possiblePlayers[playerPicker.selectedRow(inComponent: 0)].team == AppData.currentHome {
                 AppData.homeShots += 1
             } else {
                 AppData.awayShots += 1
             }
-        } else if segmentControl.selectedSegmentIndex == 1 {
+            
+        case 1:
             possiblePlayers[playerPicker.selectedRow(inComponent: 0)].shotsOnGoal += 1
             possiblePlayers[playerPicker.selectedRow(inComponent: 0)].shots += 1
             if possiblePlayers[playerPicker.selectedRow(inComponent: 0)].team == AppData.currentHome {
@@ -72,19 +76,39 @@ class EditStatsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                 AppData.awayShots += 1
                 AppData.homeSaves += 1
             }
-        } else if segmentControl.selectedSegmentIndex == 2 {
+        
+        case 2:
             possiblePlayers[playerPicker.selectedRow(inComponent: 0)].saves += 1
             if possiblePlayers[playerPicker.selectedRow(inComponent: 0)].team == AppData.currentHome {
                 AppData.homeSaves += 1
             } else {
                 AppData.awaySaves += 1
             }
-        } else {
+            
+        case 3:
             if possiblePlayers[playerPicker.selectedRow(inComponent: 0)].team == AppData.currentHome {
                 AppData.homeCorners += 1
             } else {
                 AppData.awayCorners += 1
             }
+            
+        case 4:
+            possiblePlayers[playerPicker.selectedRow(inComponent: 0)].goals += 1
+            possiblePlayers[playerPicker.selectedRow(inComponent: 0)].shots += 1
+            possiblePlayers[playerPicker.selectedRow(inComponent: 0)].shotsOnGoal += 1
+            if possiblePlayers[playerPicker.selectedRow(inComponent: 0)].team == AppData.currentHome{
+                AppData.homeScore += 1
+                AppData.homeShots += 1
+                AppData.homeSOG += 1
+            } else {
+                AppData.awayScore += 1
+                AppData.awayShots += 1
+                AppData.awaySOG += 1
+            }
+            
+        default:
+            print("default")
+            
         }
         self.dismiss(animated: true)
     }

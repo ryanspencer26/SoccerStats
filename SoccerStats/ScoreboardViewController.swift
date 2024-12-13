@@ -37,6 +37,13 @@ class ScoreboardViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if homePopUp.menu?.children.count == 1 && AppData.teams.count > 0 {
+            setHomePopUpButton()
+            setAwayPopUpButton()
+        }
+    }
+    
     func setHomePopUpButton(){
         
         // create the closure
@@ -121,37 +128,6 @@ class ScoreboardViewController: UIViewController {
         let seconds: Int = totalSeconds % 60
         let minutes: Int = totalSeconds / 60
         return String(format: "%02d:%02d", minutes, seconds)
-    }
-    
-    @IBAction func addGoalAction(_ sender: Any) {
-        if !timerStarted {
-            let alert = UIAlertController(title: "Error", message: "Game not started", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-            alert.addAction(okAction)
-            present(alert, animated: true, completion: nil)
-            return
-        }
-        var homePlayers = false
-        var awayPlayers = false
-        for team in AppData.teams {
-            if team.name == AppData.currentHome{
-                if team.players.count >= 2 {
-                    homePlayers = true
-                }
-            } else if team.name == AppData.currentAway{
-                if team.players.count >= 2{
-                    awayPlayers = true
-                }
-            }
-        }
-        if homePlayers && awayPlayers {
-            performSegue(withIdentifier: "addGoalSegue", sender: self)
-            return
-        }
-        let alert = UIAlertController(title: "Error", message: "You must have 2+ players registered for each team.", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alert.addAction(okAction)
-        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func editStatAction(_ sender: Any) {
@@ -267,14 +243,27 @@ class ScoreboardViewController: UIViewController {
         homeSaveLabel.text = "\(AppData.homeSaves)"
         awayCornerLabel.text = "\(AppData.awayCorners)"
         homeCornerLabel.text = "\(AppData.homeCorners)"
+        timerLabel.text = timeFormatted(AppData.totalTime)
     }
     
-    @IBAction func unwindS(_ seg: UIStoryboardSegue){
-        print("unwind")
+    @IBAction func restartGame(_ sender: Any) {
+        AppData.homeScore = 0
+        AppData.awayScore = 0
+        AppData.homeShots = 0
+        AppData.awayShots = 0
+        AppData.homeSOG = 0
+        AppData.awaySOG = 0
+        AppData.homeSaves = 0
+        AppData.awaySaves = 0
+        AppData.homeCorners = 0
+        AppData.awayCorners = 0
+        AppData.totalTime = 5400
+        setHomePopUpButton()
+        setAwayPopUpButton()
         updateScreen()
     }
     
-    @IBAction func unwindGo(_ seg: UIStoryboardSegue){
+    @IBAction func unwindS(_ seg: UIStoryboardSegue){
         print("unwind")
         updateScreen()
     }
