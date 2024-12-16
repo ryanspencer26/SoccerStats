@@ -39,7 +39,10 @@ class TeamAddViewController: UIViewController {
                 }
             }
         }
-        // alert user invalid input
+        let alert = UIAlertController(title: "Error", message: "Invalid Input", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func tapRecognized(_ sender: Any) {

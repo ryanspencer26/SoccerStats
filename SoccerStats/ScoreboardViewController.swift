@@ -247,20 +247,31 @@ class ScoreboardViewController: UIViewController {
     }
     
     @IBAction func restartGame(_ sender: Any) {
-        AppData.homeScore = 0
-        AppData.awayScore = 0
-        AppData.homeShots = 0
-        AppData.awayShots = 0
-        AppData.homeSOG = 0
-        AppData.awaySOG = 0
-        AppData.homeSaves = 0
-        AppData.awaySaves = 0
-        AppData.homeCorners = 0
-        AppData.awayCorners = 0
-        AppData.totalTime = 5400
-        setHomePopUpButton()
-        setAwayPopUpButton()
-        updateScreen()
+        let alert = UIAlertController(title: "Warning", message: "Are you sure you want to reset the game? All unsaved progress will be lost.", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+            AppData.homeScore = 0
+            AppData.awayScore = 0
+            AppData.homeShots = 0
+            AppData.awayShots = 0
+            AppData.homeSOG = 0
+            AppData.awaySOG = 0
+            AppData.homeSaves = 0
+            AppData.awaySaves = 0
+            AppData.homeCorners = 0
+            AppData.awayCorners = 0
+            AppData.totalTime = 5400
+            self.setHomePopUpButton()
+            self.setAwayPopUpButton()
+            self.live = false
+            self.timerStarted = false
+            self.homePopUp.isUserInteractionEnabled = true
+            self.awayPopUp.isUserInteractionEnabled = true
+            self.updateScreen()
+        }
+        let noAction = UIAlertAction(title: "No", style: .default, handler: nil)
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func unwindS(_ seg: UIStoryboardSegue){
