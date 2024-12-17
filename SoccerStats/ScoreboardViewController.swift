@@ -34,6 +34,7 @@ class ScoreboardViewController: UIViewController {
         // Do any additional setup after loading the view.
         setHomePopUpButton()
         setAwayPopUpButton()
+        updateScreen()
         
     }
     
@@ -235,14 +236,14 @@ class ScoreboardViewController: UIViewController {
     func updateScreen(){
         awayScoreLabel.text = "\(AppData.awayScore)"
         homeScoreLabel.text = "\(AppData.homeScore)"
-        awayShotLabel.text = "\(AppData.awayShots)"
-        homeShotLabel.text = "\(AppData.homeShots)"
-        awaySOGLabel.text = "\(AppData.awaySOG)"
-        homeSOGLabel.text = "\(AppData.homeSOG)"
-        awaySaveLabel.text = "\(AppData.awaySaves)"
-        homeSaveLabel.text = "\(AppData.homeSaves)"
-        awayCornerLabel.text = "\(AppData.awayCorners)"
-        homeCornerLabel.text = "\(AppData.homeCorners)"
+        awayShotLabel.text = "\(AppData.awayShots)\nShots"
+        homeShotLabel.text = "\(AppData.homeShots)\nShots"
+        awaySOGLabel.text = "\(AppData.awaySOG)\nShots on Goal"
+        homeSOGLabel.text = "\(AppData.homeSOG)\nShots on Goal"
+        awaySaveLabel.text = "\(AppData.awaySaves)\nSaves"
+        homeSaveLabel.text = "\(AppData.homeSaves)\nSaves"
+        awayCornerLabel.text = "\(AppData.awayCorners)\nCorners"
+        homeCornerLabel.text = "\(AppData.homeCorners)\nCorners"
         timerLabel.text = timeFormatted(AppData.totalTime)
     }
     
