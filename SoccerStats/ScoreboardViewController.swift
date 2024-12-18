@@ -231,6 +231,8 @@ class ScoreboardViewController: UIViewController {
         setHomePopUpButton()
         setAwayPopUpButton()
         updateScreen()
+        homePopUp.isUserInteractionEnabled = true
+        awayPopUp.isUserInteractionEnabled = true
     }
     
     func updateScreen(){
