@@ -39,7 +39,7 @@ class ScoreboardViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if homePopUp.menu?.children.count == 1 && AppData.teams.count > 0 {
+        if !timerStarted && AppData.teams.count > 0 {
             setHomePopUpButton()
             setAwayPopUpButton()
         }
@@ -167,10 +167,10 @@ class ScoreboardViewController: UIViewController {
             if !timerStarted{
                 timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
                 timerStarted = true
+                homePopUp.isUserInteractionEnabled = false
+                awayPopUp.isUserInteractionEnabled = false
             }
             live = true
-            homePopUp.isUserInteractionEnabled = false
-            awayPopUp.isUserInteractionEnabled = false
         } else {
             let alert = UIAlertController(title: "Error", message: "You must select 2 unique teams.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)

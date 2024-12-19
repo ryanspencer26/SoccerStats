@@ -38,11 +38,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         if let thePlayers = UserDefaults.standard.data(forKey: "players") {
-                        let decoder = JSONDecoder()
+            let decoder = JSONDecoder()
             if let decoded = try? decoder.decode([Player].self, from: thePlayers) {
                 AppData.players = decoded
-                        }
-                }
+                    }
+            }
         
         if let theGames = UserDefaults.standard.data(forKey: "games") {
             let decoder = JSONDecoder()
